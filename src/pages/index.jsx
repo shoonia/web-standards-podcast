@@ -2,31 +2,22 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 
-import Main from '../components/Main';
+import Main from '../layouts/Main';
 
-export const fetchAllPosts = graphql`
-  query fetchAllPosts {
-      allAtomEntry(
-        sort: {
-          fields: [pubdate]
-            order: DESC
-        }
-      ) {
-        nodes {
-          title
-          pubdate
-        }
-      }
+export const fetchMainInfo = graphql`
+  query fetchMainInfo {
+    atomFeed {
+      title
+      description
+    }
   }`;
 
 const IndexPage = ({
   data: {
-    allAtomEntry: {
-      nodes,
-    },
+    atomFeed,
   },
 }) => (
-  <Main episodes={nodes} />
+  <Main {...atomFeed} />
 );
 
 IndexPage.propTypes = {
