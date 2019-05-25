@@ -1,4 +1,5 @@
-/* eslint-disable no-undef */
+const xss = require('xss');
+
 exports.createPages = async ({ actions, graphql }) => {
   const EpisodePage = require.resolve('./src/templates/EpisodePage.jsx');
   const { createPage } = actions;
@@ -8,7 +9,8 @@ exports.createPages = async ({ actions, graphql }) => {
       allAtomEntry {
         nodes {
           title
-          link
+          date
+          description
           itunes_summary {
             _
           }
@@ -20,17 +22,19 @@ exports.createPages = async ({ actions, graphql }) => {
     throw new Error(JSON.stringify(errors, null, 2));
   }
 
-  data.allAtomEntry.nodes.forEach((node) => {
-    const [ext] = node.link.split('/').slice(-1);
-    const episode = parseInt(ext, 10);
+  data.allAtomEntry.nodes.forEach((node, index) => {
+    const episode = index + 1;
 
     createPage({
       path: `/episode/${episode}`,
       component: EpisodePage,
       context: {
         title: node.title,
+        date: node.date,
         description: node.itunes_summary._,
         episode,
+        lang: /[a-z]/g.test(node.title) ? 'en' : 'ru',
+        html: xss(node.description),
       },
     });
   });
