@@ -14,6 +14,11 @@ exports.createPages = async ({ actions, graphql }) => {
           itunes_summary {
             _
           }
+          enclosures {
+            url
+            type
+            length
+          }
         }
       }
     }`);
@@ -35,6 +40,7 @@ exports.createPages = async ({ actions, graphql }) => {
         episode,
         lang: /[a-z]/g.test(node.title) ? 'en' : 'ru',
         html: xss(node.description),
+        audio: node.enclosures[0],
       },
     });
   });

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Audio from '../../components/Audio';
 import Document from '../../components/Document';
 import Content from '../../components/Content';
 
@@ -11,6 +12,7 @@ const Episode = (props) => {
     description,
     lang,
     html,
+    audio,
   } = props;
 
   return (
@@ -26,6 +28,11 @@ const Episode = (props) => {
         <time dateTime={date}>
           {date}
         </time>
+        <Audio
+          {...audio}
+          lang={lang}
+          label={title}
+        />
         <Content html={html} />
       </main>
     </Document>
@@ -38,6 +45,7 @@ Episode.propTypes = {
   description: PropTypes.string.isRequired,
   lang: PropTypes.string.isRequired,
   html: PropTypes.string.isRequired,
+  audio: PropTypes.shape().isRequired,
 };
 
 export default Episode;
