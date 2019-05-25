@@ -10,14 +10,32 @@ export const fetchMainInfo = graphql`
       title
       description
     }
+    allAtomEntry(
+      limit: 10
+      sort: {
+        fields: [date]
+        order: DESC}
+    ) {
+      nodes {
+        id
+        title
+        date
+        itunes_summary {
+          _
+        }
+      }
+    }
   }`;
 
 const IndexPage = ({
   data: {
     atomFeed,
+    allAtomEntry: {
+      nodes,
+    },
   },
 }) => (
-  <Main {...atomFeed} />
+  <Main {...atomFeed} nodes={nodes} />
 );
 
 IndexPage.propTypes = {
