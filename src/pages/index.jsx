@@ -14,7 +14,8 @@ export const fetchMainInfo = graphql`
       limit: 10
       sort: {
         fields: [date]
-        order: DESC}
+        order: DESC
+      }
     ) {
       nodes {
         id

@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Episode = (props) => {
+const Playitem = (props) => {
   const {
     title,
     itunes_summary,
@@ -24,7 +24,7 @@ const Episode = (props) => {
   );
 };
 
-Episode.propTypes = {
+Playitem.propTypes = {
   title: PropTypes.string.isRequired,
   itunes_summary: PropTypes.shape({
     _: PropTypes.string.isRequired,
@@ -32,4 +32,4 @@ Episode.propTypes = {
   date: PropTypes.string.isRequired,
 };
 
-export default Episode;
+export default Playitem;

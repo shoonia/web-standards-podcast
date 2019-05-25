@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Document from '../../components/Document';
-import Episodes from '../../components/Episodes';
+import Playlist from '../../components/Playlist';
 
 const Main = (props) => {
   const {
@@ -18,7 +18,7 @@ const Main = (props) => {
       <main>
         <h1>{title}</h1>
         <p>{description}</p>
-        <Episodes nodes={nodes} />
+        <Playlist nodes={nodes} />
       </main>
     </Document>
   );
