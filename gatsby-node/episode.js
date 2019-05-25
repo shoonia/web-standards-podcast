@@ -1,7 +1,7 @@
 const xss = require('xss');
 
-exports.createPages = async ({ actions, graphql }) => {
-  const EpisodePage = require.resolve('./src/templates/EpisodePage.jsx');
+module.exports = async ({ actions, graphql }) => {
+  const EpisodePage = require.resolve('../src/templates/EpisodePage.jsx');
   const { createPage } = actions;
 
   const { data, errors } = await graphql(`
@@ -38,18 +38,10 @@ exports.createPages = async ({ actions, graphql }) => {
         date: node.date,
         description: node.itunes_summary._,
         episode,
-        lang: /[a-z]/g.test(node.title) ? 'en' : 'ru',
+        lang: /[a-z]/.test(node.title) ? 'en' : 'ru',
         html: xss(node.description),
         audio: node.enclosures[0],
       },
     });
   });
-};
-
-exports.onCreateWebpackConfig = ({ stage, actions }) => {
-  if (stage === 'build-javascript') {
-    actions.setWebpackConfig({
-      devtool: false,
-    });
-  }
 };

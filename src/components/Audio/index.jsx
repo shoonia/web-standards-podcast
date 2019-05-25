@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getVolume, setVolume } from './volume';
 
 class Audio extends React.PureComponent {
   constructor(props) {
@@ -8,7 +9,11 @@ class Audio extends React.PureComponent {
   }
 
   componentDidMount() {
-    this.audio.current.volume = 0.5;
+    this.audio.current.volume = getVolume();
+  }
+
+  onVolumeChange = ({ target }) => {
+    setVolume(target.volume);
   }
 
   render() {
@@ -25,10 +30,10 @@ class Audio extends React.PureComponent {
           ref={this.audio}
           controls
           preload="auto"
+          onVolumeChange={this.onVolumeChange}
         >
           <track
             kind="captions"
-            src={url}
             srcLang={lang}
             label={label}
             default

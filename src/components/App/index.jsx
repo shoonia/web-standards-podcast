@@ -68,8 +68,9 @@ const App = (props) => {
       meta={metaData}
     >
       <html lang={$lang} className={css.root} />
-      <link href="https://web-standards.ru" rel="preconnect" crossOrigin="anonymous" />
-      <link href="https://web-standards.ru" rel="dns-prefetch" crossOrigin="anonymous" />
+      <link rel="preconnect" href="https://web-standards.ru" crossOrigin="anonymous" />
+      <link rel="dns-prefetch" href="https://web-standards.ru" crossOrigin="anonymous" />
+      <link rel="alternate" href="https://web-standards.ru/podcast/feed/" type="application/rss+xml" />
       <body className={css.content} />
     </Helmet>
   );
