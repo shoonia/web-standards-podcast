@@ -17,8 +17,8 @@ export const fetchMainInfo = graphql`
         order: DESC
       }
     ) {
+      totalCount
       nodes {
-        id
         title
         date
         itunes_summary {
@@ -32,12 +32,22 @@ const IndexPage = ({
   data: {
     atomFeed,
     allAtomEntry: {
+      totalCount,
       nodes,
     },
   },
-}) => (
-  <Main {...atomFeed} nodes={nodes} />
-);
+}) => {
+  const items = nodes.map((node, index) => ({
+    title: node.title,
+    date: node.date,
+    description: node.itunes_summary._,
+    episode: (totalCount - index),
+  }));
+
+  return (
+    <Main {...atomFeed} nodes={items} />
+  );
+};
 
 IndexPage.propTypes = {
   data: PropTypes.shape().isRequired,

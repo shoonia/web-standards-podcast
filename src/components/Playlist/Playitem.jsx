@@ -1,24 +1,29 @@
-/* eslint-disable camelcase */
 import React from 'react';
+import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 
 const Playitem = (props) => {
   const {
     title,
-    itunes_summary,
+    description,
     date,
+    episode,
   } = props;
 
   return (
     <li>
       <h2>
-        {title}
+        <Link
+          to={`/episode/${episode}`}
+        >
+          {title}
+        </Link>
       </h2>
       <time dateTime={date}>
         {date}
       </time>
       <p>
-        {itunes_summary._}
+        {description}
       </p>
     </li>
   );
@@ -26,10 +31,9 @@ const Playitem = (props) => {
 
 Playitem.propTypes = {
   title: PropTypes.string.isRequired,
-  itunes_summary: PropTypes.shape({
-    _: PropTypes.string.isRequired,
-  }).isRequired,
+  description: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
+  episode: PropTypes.number.isRequired,
 };
 
 export default Playitem;

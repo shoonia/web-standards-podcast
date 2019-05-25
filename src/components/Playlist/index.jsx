@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 import Playitem from './Playitem';
 
-const Episodes = ({ nodes }) => {
+const Playlist = ({ nodes }) => {
   const items = nodes.map(node => (
-    <Playitem key={node.id} {...node} />
+    <Playitem key={node.episode} {...node} />
   ));
 
   return (
@@ -15,12 +15,12 @@ const Episodes = ({ nodes }) => {
   );
 };
 
-Episodes.propTypes = {
+Playlist.propTypes = {
   nodes: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string.isRequired,
+      episode: PropTypes.number.isRequired,
     }).isRequired,
   ).isRequired,
 };
 
-export default Episodes;
+export default Playlist;

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 exports.createPages = async ({ actions, graphql }) => {
   const EpisodePage = require.resolve('./src/templates/EpisodePage.jsx');
   const { createPage } = actions;
@@ -8,6 +9,9 @@ exports.createPages = async ({ actions, graphql }) => {
         nodes {
           title
           link
+          itunes_summary {
+            _
+          }
         }
       }
     }`);
@@ -18,13 +22,15 @@ exports.createPages = async ({ actions, graphql }) => {
 
   data.allAtomEntry.nodes.forEach((node) => {
     const [ext] = node.link.split('/').slice(-1);
-    const number = parseInt(ext, 10);
+    const episode = parseInt(ext, 10);
 
     createPage({
-      path: `/episodes/${number}`,
+      path: `/episode/${episode}`,
       component: EpisodePage,
       context: {
         title: node.title,
+        description: node.itunes_summary._,
+        episode,
       },
     });
   });

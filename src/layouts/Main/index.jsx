@@ -13,7 +13,7 @@ const Main = (props) => {
 
   return (
     <Document
-      label="Главная"
+      title="Подкасты"
     >
       <main>
         <h1>{title}</h1>
