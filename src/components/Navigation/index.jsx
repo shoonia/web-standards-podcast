@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
+
+import urls from '../../urls';
 
 const Navigation = (props) => {
   const {
@@ -8,23 +11,42 @@ const Navigation = (props) => {
     previous,
   } = props;
 
+  const hasNext = next !== null;
+  const hasPrev = previous !== null;
+
   return (
-    <nav>
-      {(previous !== null) && (
-        <Link
-          to={`/podcast/${previous}`}
-        >
-          ← Позже
-        </Link>
-      )}
-      {(next !== null) && (
-        <Link
-          to={`/podcast/${next}`}
-        >
-          Раньше →
-        </Link>
-      )}
-    </nav>
+    <>
+      <Helmet>
+        {hasPrev && (
+          <link
+            rel="prev"
+            href={urls.buildPodcast(previous)}
+          />
+        )}
+        {hasNext && (
+          <link
+            rel="next"
+            href={urls.buildPodcast(next)}
+          />
+        )}
+      </Helmet>
+      <nav>
+        {hasPrev && (
+          <Link
+            to={urls.buildPodcast(previous)}
+          >
+            ← Позже
+          </Link>
+        )}
+        {hasNext && (
+          <Link
+            to={urls.buildPodcast(next)}
+          >
+            Раньше →
+          </Link>
+        )}
+      </nav>
+    </>
   );
 };
 

@@ -68,8 +68,6 @@ const App = (props) => {
       meta={metaData}
     >
       <html lang={$lang} className={css.root} />
-      <link rel="preconnect" href="https://web-standards.ru" />
-      <link rel="dns-prefetch" href="https://web-standards.ru" />
       <link
         rel="alternate"
         href="https://web-standards.ru/podcast/feed/"

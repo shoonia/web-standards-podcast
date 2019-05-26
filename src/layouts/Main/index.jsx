@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import Document from '../../components/Document';
 import Playlist from '../../components/Playlist';
+import urls from '../../urls';
 
 const Main = (props) => {
   const {
@@ -22,7 +23,9 @@ const Main = (props) => {
         <Playlist nodes={nodes} />
       </main>
       <nav>
-        <Link to="/podcast/1">
+        <Link
+          to={urls.buildPodcast(1)}
+        >
           Все выпуски
         </Link>
       </nav>

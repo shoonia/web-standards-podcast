@@ -1,4 +1,5 @@
 import React from 'react';
+import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 
 import Audio from '../../components/Audio';
@@ -21,6 +22,10 @@ const Episode = (props) => {
       description={description}
       lang={lang}
     >
+      <Helmet>
+        <link rel="preconnect" href="https://web-standards.ru" />
+        <link rel="dns-prefetch" href="https://web-standards.ru" />
+      </Helmet>
       <main>
         <h1>
           {title}

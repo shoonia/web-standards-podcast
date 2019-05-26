@@ -2,6 +2,7 @@ import React, { memo } from 'react';
 import { Link } from 'gatsby';
 
 import Banner from './Banner';
+import urls from '../../urls';
 
 const Header = () => (
   <header>
@@ -23,7 +24,7 @@ const Header = () => (
         </li>
         <li>
           <Link
-            to="/podcast/1"
+            to={urls.buildPodcast(1)}
           >
             Подкасты
           </Link>

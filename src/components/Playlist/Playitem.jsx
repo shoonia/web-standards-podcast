@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 
+import urls from '../../urls';
+
 const Playitem = (props) => {
   const {
     title,
@@ -15,7 +17,7 @@ const Playitem = (props) => {
       <article>
         <h2>
           <Link
-            to={`/episode/${episode}`}
+            to={urls.buildEpisode(episode)}
           >
             {title}
           </Link>
