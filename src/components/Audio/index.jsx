@@ -3,6 +3,13 @@ import PropTypes from 'prop-types';
 import { getVolume, setVolume } from './volume';
 
 class Audio extends React.PureComponent {
+  static propTypes = {
+    lang: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+  }
+
   constructor(props) {
     super(props);
     this.audio = React.createRef();
@@ -47,12 +54,5 @@ class Audio extends React.PureComponent {
     );
   }
 }
-
-Audio.propTypes = {
-  lang: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-};
 
 export default Audio;

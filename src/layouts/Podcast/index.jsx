@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Document from '../../components/Document';
 import Playlist from '../../components/Playlist';
-import Navigation from '../../components/Navigation';
+import Pagination from '../../components/Pagination';
 
 const Podcast = (props) => {
   const {
@@ -22,7 +22,7 @@ const Podcast = (props) => {
         <p>{description}</p>
         <Playlist nodes={nodes} />
       </main>
-      <Navigation {...navigation} />
+      <Pagination {...navigation} />
     </Document>
   );
 };

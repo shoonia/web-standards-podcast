@@ -1,0 +1,16 @@
+.list {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.item,
+.prev,
+.next,
+.break {
+  margin-left: 1em;
+  margin-right: 1em;
+  list-style-type: none;
+}
