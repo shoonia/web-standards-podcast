@@ -48,6 +48,7 @@ module.exports = async ({ actions, graphql }) => {
     date: node.date,
     description: node.itunes_summary._,
     episode: totalCount - index,
+    lang: /[a-z]/.test(node.title) ? 'en' : 'ru',
   }));
 
   Array(totalPages).fill(null).forEach((_, index) => {

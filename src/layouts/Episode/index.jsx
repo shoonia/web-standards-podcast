@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Audio from '../../components/Audio';
 import Document from '../../components/Document';
 import Content from '../../components/Content';
+import Time from '../../components/Time';
 
 const Episode = (props) => {
   const {
@@ -30,9 +31,7 @@ const Episode = (props) => {
         <h1>
           {title}
         </h1>
-        <time dateTime={date}>
-          {date}
-        </time>
+        <Time date={date} lang={lang} />
         <Audio
           {...audio}
           lang={lang}

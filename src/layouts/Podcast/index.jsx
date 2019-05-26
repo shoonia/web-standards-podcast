@@ -15,7 +15,7 @@ const Podcast = (props) => {
 
   return (
     <Document
-      title="Подкасты"
+      title={`Подкасты. Страница ${navigation.current}`}
     >
       <main>
         <h1>{title}</h1>

@@ -58,7 +58,10 @@ class Pagination extends React.PureComponent {
             />
           )}
         </Helmet>
-        <nav>
+        <nav
+          aria-label="постраничная навигация"
+          role="navigation"
+        >
           <ReactPaginate
             pageCount={totalPages}
             // forcePage={initialPage}

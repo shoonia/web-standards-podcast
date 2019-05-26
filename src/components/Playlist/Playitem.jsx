@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 
+import Time from '../Time';
 import urls from '../../urls';
 
 const Playitem = (props) => {
@@ -10,6 +11,7 @@ const Playitem = (props) => {
     description,
     date,
     episode,
+    lang,
   } = props;
 
   return (
@@ -22,9 +24,7 @@ const Playitem = (props) => {
             {title}
           </Link>
         </h2>
-        <time dateTime={date}>
-          {date}
-        </time>
+        <Time date={date} lang={lang} />
         <p>
           {description}
         </p>
@@ -38,6 +38,7 @@ Playitem.propTypes = {
   description: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   episode: PropTypes.number.isRequired,
+  lang: PropTypes.string.isRequired,
 };
 
 export default Playitem;

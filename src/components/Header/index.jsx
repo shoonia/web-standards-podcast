@@ -13,7 +13,9 @@ const Header = () => (
         <Banner />
       </Link>
     </div>
-    <nav>
+    <nav
+      aria-label="навигация по сайту"
+    >
       <ul>
         <li>
           <Link
