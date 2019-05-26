@@ -7,5 +7,5 @@ export function getVolume() {
 }
 
 export function setVolume(volume) {
-  document.cookie = `volume=${volume};max-age=${60 * 60 * 24 * 365}`;
+  document.cookie = `volume=${volume};path=/;max-age=${60 * 60 * 24 * 365}`;
 }

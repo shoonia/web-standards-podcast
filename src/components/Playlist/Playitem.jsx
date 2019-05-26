@@ -12,19 +12,21 @@ const Playitem = (props) => {
 
   return (
     <li>
-      <h2>
-        <Link
-          to={`/episode/${episode}`}
-        >
-          {title}
-        </Link>
-      </h2>
-      <time dateTime={date}>
-        {date}
-      </time>
-      <p>
-        {description}
-      </p>
+      <article>
+        <h2>
+          <Link
+            to={`/episode/${episode}`}
+          >
+            {title}
+          </Link>
+        </h2>
+        <time dateTime={date}>
+          {date}
+        </time>
+        <p>
+          {description}
+        </p>
+      </article>
     </li>
   );
 };

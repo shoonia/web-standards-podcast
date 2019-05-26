@@ -17,7 +17,6 @@ module.exports = async ({ actions, graphql }) => {
           enclosures {
             url
             type
-            length
           }
         }
       }

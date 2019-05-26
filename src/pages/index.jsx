@@ -41,8 +41,7 @@ const IndexPage = ({
     title: node.title,
     date: node.date,
     description: node.itunes_summary._,
-    episode: (totalCount - index),
-    lang: /[a-z]/.test(node.title) ? 'en' : 'ru',
+    episode: totalCount - index,
   }));
 
   return (
