@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Link } from 'gatsby';
+
+import Banner from './Banner';
 
 const Header = () => (
   <header>
+    <div>
+      <Link
+        to="/"
+      >
+        <Banner />
+      </Link>
+    </div>
     <nav>
       <ul>
         <li>
@@ -24,4 +33,4 @@ const Header = () => (
   </header>
 );
 
-export default Header;
+export default memo(Header);

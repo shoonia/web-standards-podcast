@@ -14,14 +14,14 @@ const Navigation = (props) => {
         <Link
           to={`/podcast/${previous}`}
         >
-          ← Ранее
+          ← Позже
         </Link>
       )}
       {(next !== null) && (
         <Link
           to={`/podcast/${next}`}
         >
-          Далее →
+          Раньше →
         </Link>
       )}
     </nav>
