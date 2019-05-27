@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Host: web-standards.netlify.com
+Sitemap: https://web-standards.netlify.com/sitemap.xml
