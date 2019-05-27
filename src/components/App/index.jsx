@@ -59,6 +59,10 @@ const App = (props) => {
       name: 'twitter:description',
       content: $description,
     },
+    {
+      name: 'google-site-verification',
+      content: 'r9IQYersVVRdg00VhqCTt8yTNmuCdgC-fLFsTiCrk4M',
+    },
   ];
 
   return (
