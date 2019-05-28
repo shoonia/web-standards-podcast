@@ -1,0 +1,38 @@
+.header {
+  background-color: #153543;
+  padding: 0 15px;
+  height: 60px;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  height: 60px;
+}
+
+.menu {
+  padding-left: 1em;
+}
+
+.menuList {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menuLink {
+  display: inline-block;
+  height: 60px;
+  line-height: 60px;
+  padding: 0 1em;
+  color: #63BBDB;
+  text-decoration: none;
+  transition: color .1s ease-in;
+}
+
+.menuLink:hover {
+  color: #B2DB35;
+}

@@ -1,38 +1,38 @@
 import React, { memo } from 'react';
 import { Link } from 'gatsby';
 
-import Banner from './Banner';
+import Banner from '../Banner';
 import urls from '../../urls';
+import css from './Header.module.css';
 
 const Header = () => (
-  <header>
-    <div>
-      <Link
-        to="/"
+  <header className={css.header}>
+    <div className={css.wrapper}>
+      <Banner />
+      <nav
+        aria-label="навигация по сайту"
+        className={css.menu}
       >
-        <Banner />
-      </Link>
+        <ul className={css.menuList}>
+          <li>
+            <Link
+              to="/"
+              className={css.menuLink}
+            >
+              Главная
+            </Link>
+          </li>
+          <li>
+            <Link
+              to={urls.buildPodcast(1)}
+              className={css.menuLink}
+            >
+              Подкасты
+            </Link>
+          </li>
+        </ul>
+      </nav>
     </div>
-    <nav
-      aria-label="навигация по сайту"
-    >
-      <ul>
-        <li>
-          <Link
-            to="/"
-          >
-            Главная
-          </Link>
-        </li>
-        <li>
-          <Link
-            to={urls.buildPodcast(1)}
-          >
-            Подкасты
-          </Link>
-        </li>
-      </ul>
-    </nav>
   </header>
 );
 

@@ -1,0 +1,25 @@
+.box {
+  padding: 0;
+  margin: 0;
+  height: 60px;
+  display: flex;
+}
+
+.image {
+  float: left;
+  padding-right: .7em;
+  width: 40px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.title {
+  font-size: 1.5em;
+  white-space: nowrap;
+  line-height: 60px;
+}
+
+.link {
+  text-decoration: none;
+  color: #FFF;
+}

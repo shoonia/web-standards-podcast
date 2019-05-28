@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Playitem from './Playitem';
+import css from './Playlist.module.css';
 
 const Playlist = ({ nodes }) => {
   const items = nodes.map(node => (
@@ -9,7 +10,7 @@ const Playlist = ({ nodes }) => {
   ));
 
   return (
-    <ul>
+    <ul className={css.list}>
       {items}
     </ul>
   );

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import Time from '../Time';
 import urls from '../../urls';
+import css from './Playlist.module.css';
 
 const Playitem = (props) => {
   const {
@@ -16,8 +17,10 @@ const Playitem = (props) => {
 
   return (
     <li>
-      <article>
-        <h2>
+      <article
+        lang={lang}
+      >
+        <h2 className={css.title}>
           <Link
             to={urls.buildEpisode(episode)}
           >

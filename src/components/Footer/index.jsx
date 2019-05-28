@@ -7,7 +7,7 @@ const Footer = () => (
     className={css.footer}
     role="contentinfo"
   >
-    <div className={css.links}>
+    <div className={css.container}>
       <section>
         <h3>
           Слушайте
@@ -72,7 +72,7 @@ const Footer = () => (
         </ul>
       </section>
     </div>
-    <div>
+    <div className={css.container}>
       <abbr
         title="Лицензии Creative Commons"
       >

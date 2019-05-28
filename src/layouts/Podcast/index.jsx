@@ -19,11 +19,9 @@ const Podcast = (props) => {
       title={`Подкасты. Страница ${navigation.current}`}
       path={urls.buildPodcast(navigation.current)}
     >
-      <main>
-        <h1>{title}</h1>
-        <p>{description}</p>
-        <Playlist nodes={nodes} />
-      </main>
+      <h1>{title}</h1>
+      <p>{description}</p>
+      <Playlist nodes={nodes} />
       <Pagination {...navigation} />
     </Document>
   );

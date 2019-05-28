@@ -17,11 +17,9 @@ const Main = (props) => {
     <Document
       title="Подкасты"
     >
-      <main>
-        <h1>{title}</h1>
-        <p>{description}</p>
-        <Playlist nodes={nodes} />
-      </main>
+      <h1>{title}</h1>
+      <p>{description}</p>
+      <Playlist nodes={nodes} />
       <nav>
         <Link
           to={urls.buildPodcast(1)}

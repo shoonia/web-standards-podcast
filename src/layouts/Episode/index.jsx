@@ -30,18 +30,16 @@ const Episode = (props) => {
         <link rel="preconnect" href="https://web-standards.ru" />
         <link rel="dns-prefetch" href="https://web-standards.ru" />
       </Helmet>
-      <main>
-        <h1>
-          {title}
-        </h1>
-        <Time date={date} lang={lang} />
-        <Audio
-          {...audio}
-          lang={lang}
-          label={title}
-        />
-        <Content html={html} />
-      </main>
+      <h1>
+        {title}
+      </h1>
+      <Time date={date} lang={lang} />
+      <Audio
+        {...audio}
+        lang={lang}
+        label={title}
+      />
+      <Content html={html} />
     </Document>
   );
 };

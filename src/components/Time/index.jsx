@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import css from './Time.module.css';
+
 const toLocaleString = (date, lang) => new Date(date).toLocaleString([lang], {
   year: 'numeric',
   month: 'long',
@@ -11,6 +13,7 @@ const toLocaleString = (date, lang) => new Date(date).toLocaleString([lang], {
 const Time = ({ date, lang }) => (
   <time
     dateTime={date}
+    className={css.time}
   >
     {toLocaleString(date, lang)}
   </time>
