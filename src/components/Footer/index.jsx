@@ -73,9 +73,11 @@ const Footer = () => (
       </section>
     </div>
     <div>
-      <small>
+      <abbr
+        title="Лицензии Creative Commons"
+      >
         СС BY-NC-ND 4.0
-      </small>
+      </abbr>
     </div>
   </footer>
 );

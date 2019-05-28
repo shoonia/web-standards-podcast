@@ -6,17 +6,18 @@ import { fetchDescription } from './query';
 import css from './App.module.css';
 
 const App = (props) => {
-  const data = fetchDescription();
+  const { meta, siteUrl } = fetchDescription();
   const {
     title,
     description,
     image,
     lang,
+    path,
   } = props;
 
-  const $description = description || data.description;
-  const $image = image || data.image.url;
-  const $lang = lang || data.language;
+  const $description = description || meta.description;
+  const $image = image || meta.image.url;
+  const $lang = lang || meta.language;
 
   const metaData = [
     {
@@ -35,10 +36,10 @@ const App = (props) => {
       property: 'og:type',
       content: 'website',
     },
-    // {
-    //   property: 'og:url',
-    //   content: '',
-    // },
+    {
+      property: 'og:url',
+      content: siteUrl + path,
+    },
     {
       property: 'og:image',
       content: $image,
@@ -47,10 +48,10 @@ const App = (props) => {
       name: 'twitter:card',
       content: 'summary',
     },
-    // {
-    //   name: 'twitter:creator',
-    //   content: '',
-    // },
+    {
+      name: 'twitter:site',
+      content: '@webstandards_ru',
+    },
     {
       name: 'twitter:title',
       content: title,
@@ -67,7 +68,7 @@ const App = (props) => {
 
   return (
     <Helmet
-      title={data.title}
+      title={meta.title}
       titleTemplate={`%s | ${title}`}
       meta={metaData}
     >
@@ -76,7 +77,7 @@ const App = (props) => {
         rel="alternate"
         href="https://web-standards.ru/podcast/feed/"
         type="application/rss+xml"
-        title={data.description}
+        title={meta.description}
       />
       <body className={css.content} />
     </Helmet>
@@ -88,6 +89,7 @@ App.defaultProps = {
   description: null,
   image: null,
   lang: null,
+  path: '',
 };
 
 App.propTypes = {
@@ -95,6 +97,7 @@ App.propTypes = {
   description: PropTypes.string,
   image: PropTypes.string,
   lang: PropTypes.string,
+  path: PropTypes.string,
 };
 
 export default App;

@@ -6,12 +6,14 @@ import Audio from '../../components/Audio';
 import Document from '../../components/Document';
 import Content from '../../components/Content';
 import Time from '../../components/Time';
+import urls from '../../urls';
 
 const Episode = (props) => {
   const {
     title,
     date,
     description,
+    episode,
     lang,
     html,
     audio,
@@ -22,6 +24,7 @@ const Episode = (props) => {
       title={title}
       description={description}
       lang={lang}
+      path={urls.buildEpisode(episode)}
     >
       <Helmet>
         <link rel="preconnect" href="https://web-standards.ru" />
@@ -47,6 +50,7 @@ Episode.propTypes = {
   title: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
+  episode: PropTypes.number.isRequired,
   lang: PropTypes.string.isRequired,
   html: PropTypes.string.isRequired,
   audio: PropTypes.shape().isRequired,

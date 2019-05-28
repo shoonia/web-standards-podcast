@@ -1,10 +1,17 @@
 import { graphql, useStaticQuery } from 'gatsby';
 
 export function fetchDescription() {
-  const { atomFeed } = useStaticQuery(
+  const {
+    meta,
+    site: {
+      siteMetadata: {
+        siteUrl,
+      },
+    },
+  } = useStaticQuery(
     graphql`
       query fetchDescription {
-        atomFeed {
+        meta: atomFeed {
           title
           description
           language
@@ -12,10 +19,18 @@ export function fetchDescription() {
             url
           }
         }
+        site {
+          siteMetadata {
+            siteUrl
+          }
+        }
       }`,
   );
 
-  return atomFeed;
+  return {
+    meta,
+    siteUrl,
+  };
 }
 
 export default null;

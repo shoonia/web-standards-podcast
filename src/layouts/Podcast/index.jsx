@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Document from '../../components/Document';
 import Playlist from '../../components/Playlist';
 import Pagination from '../../components/Pagination';
+import urls from '../../urls';
 
 const Podcast = (props) => {
   const {
@@ -16,6 +17,7 @@ const Podcast = (props) => {
   return (
     <Document
       title={`Подкасты. Страница ${navigation.current}`}
+      path={urls.buildPodcast(navigation.current)}
     >
       <main>
         <h1>{title}</h1>

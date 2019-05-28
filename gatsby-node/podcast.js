@@ -4,6 +4,11 @@ module.exports = async ({ actions, graphql }) => {
 
   const { data, errors } = await graphql(`
   {
+    site {
+      siteMetadata {
+        siteUrl
+      }
+    }
     atomFeed {
       title
       description
@@ -30,6 +35,11 @@ module.exports = async ({ actions, graphql }) => {
   }
 
   const {
+    site: {
+      siteMetadata: {
+        siteUrl,
+      },
+    },
     atomFeed: {
       title,
       description,
@@ -42,6 +52,7 @@ module.exports = async ({ actions, graphql }) => {
 
   const PAGE_LIMIT = 25;
   const totalPages = Math.ceil(totalCount / PAGE_LIMIT);
+  const buildUrl = number => `/podcast/${number}`;
 
   const items = nodes.map((node, index) => ({
     title: node.title,
@@ -57,7 +68,7 @@ module.exports = async ({ actions, graphql }) => {
     const end = start + PAGE_LIMIT;
 
     createPage({
-      path: `/podcast/${current}`,
+      path: buildUrl(current),
       component: PodcastPage,
       context: {
         title,
@@ -67,8 +78,8 @@ module.exports = async ({ actions, graphql }) => {
           // totalCount,
           totalPages,
           current,
-          previous: index === 0 ? null : index,
-          next: current === totalPages ? null : current + 1,
+          prevUrl: (index > 0) ? (siteUrl + buildUrl(index)) : null,
+          nextUrl: (current < totalPages) ? (siteUrl + buildUrl(current + 1)) : null,
         },
       },
     });

@@ -9,20 +9,20 @@ import css from './Pagination.module.css';
 
 class Pagination extends React.PureComponent {
   static defaultProps = {
-    previous: null,
-    next: null,
+    prevUrl: null,
+    nextUrl: null,
   };
 
   static propTypes = {
-    previous: PropTypes.number,
-    next: PropTypes.number,
+    prevUrl: PropTypes.string,
+    nextUrl: PropTypes.string,
     totalPages: PropTypes.number.isRequired,
     current: PropTypes.number.isRequired,
   };
 
   ariaLabelBuilder = (pageNumber, isActive) => (
     isActive
-      ? `cтраница ${pageNumber} текущая страница`
+      ? `cтраница ${pageNumber}, текущая страница`
       : `cтраница ${pageNumber}`
   );
 
@@ -32,29 +32,27 @@ class Pagination extends React.PureComponent {
 
   render() {
     const {
-      next,
-      previous,
+      nextUrl,
+      prevUrl,
       totalPages,
       current,
     } = this.props;
 
-    const hasNext = next !== null;
-    const hasPrev = previous !== null;
     const initialPage = (current < 1) ? 0 : (current - 1);
 
     return (
       <>
         <Helmet>
-          {hasPrev && (
+          {prevUrl !== null && (
             <link
               rel="prev"
-              href={urls.buildPodcast(previous)}
+              href={prevUrl}
             />
           )}
-          {hasNext && (
+          {nextUrl !== null && (
             <link
               rel="next"
-              href={urls.buildPodcast(next)}
+              href={nextUrl}
             />
           )}
         </Helmet>
