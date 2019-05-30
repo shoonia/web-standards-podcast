@@ -1,1 +1,3 @@
-export { default } from '../layouts/NotFound';
+import NotFound from '../layouts/NotFound';
+
+export default NotFound;
