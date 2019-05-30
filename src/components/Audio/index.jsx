@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getVolume, setVolume } from './volume';
+import util from './util';
 
 class Audio extends React.PureComponent {
   static propTypes = {
@@ -16,11 +16,15 @@ class Audio extends React.PureComponent {
   }
 
   componentDidMount() {
-    this.audio.current.volume = getVolume();
+    this.audio.current.volume = util.getVolume();
   }
 
   onVolumeChange = ({ target }) => {
-    setVolume(target.volume);
+    util.setVolume(target.volume);
+  }
+
+  onLoadedMetadata = () => {
+    this.audio.current.currentTime = util.getCurrentTime();
   }
 
   render() {
@@ -38,6 +42,7 @@ class Audio extends React.PureComponent {
           controls
           preload="auto"
           onVolumeChange={this.onVolumeChange}
+          onLoadedMetadata={this.onLoadedMetadata}
         >
           <track
             kind="captions"
