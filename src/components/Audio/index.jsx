@@ -37,24 +37,24 @@ class Audio extends React.PureComponent {
 
     return (
       <div>
-        <audio
-          ref={this.audio}
-          controls
-          preload="auto"
-          onVolumeChange={this.onVolumeChange}
-          onLoadedMetadata={this.onLoadedMetadata}
-        >
-          <track
-            kind="captions"
-            srcLang={lang}
-            label={label}
-            default
-          />
-          <source
+        {(typeof window !== 'undefined') && (
+          <audio
+            ref={this.audio}
+            controls
+            preload="auto"
+            onVolumeChange={this.onVolumeChange}
+            onLoadedMetadata={this.onLoadedMetadata}
             src={url}
             type={type}
-          />
-        </audio>
+            lang={lang}
+          >
+            <track
+              kind="captions"
+              label={label}
+              default
+            />
+          </audio>
+        )}
       </div>
     );
   }

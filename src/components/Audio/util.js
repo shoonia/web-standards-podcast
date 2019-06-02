@@ -12,8 +12,8 @@ export default {
   },
 
   getCurrentTime() {
-    const val = document.location.hash.slice(1);
-    const time = parseInt(val, 10);
+    const val = /[?&]time=([\d]*)/.exec(window.location.search);
+    const time = Array.isArray(val) ? parseInt(val[1], 10) : 0;
 
     return isNaN(time) ? 0 : time;
   },
