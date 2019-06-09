@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -22,6 +23,7 @@ class AudioPlayer extends React.PureComponent {
 
     this.audio = audio;
     this.progress = React.createRef();
+    this.passed = React.createRef();
 
     this.state = {
       isDisabled: true,
@@ -31,7 +33,7 @@ class AudioPlayer extends React.PureComponent {
   componentDidMount() {
     const { url } = this.props;
     const time = util.getCurrentTime();
-    const progress = this.progress.current;
+    const passed = this.passed.current;
 
     this.audio.src = url;
 
@@ -41,12 +43,8 @@ class AudioPlayer extends React.PureComponent {
       this.setState({ isDisabled: false });
     });
 
-    this.audio.addEventListener('durationchange', (event) => {
-      progress.max = Math.round(event.target.duration);
-    });
-
-    this.audio.addEventListener('timeupdate', (event) => {
-      progress.value = Math.round(event.target.currentTime);
+    this.audio.addEventListener('timeupdate', ({ target }) => {
+      passed.style.width = `${this.calculatePass(target)}%`;
     });
   }
 
@@ -63,8 +61,18 @@ class AudioPlayer extends React.PureComponent {
     }
   };
 
-  changeTime = (event) => {
-    this.audio.currentTime = event.target.value;
+  calculatePass({ duration, currentTime }) {
+    if (duration === 0) return 0;
+    return (currentTime / duration) * 100;
+  }
+
+  handleChangeTime = (event) => {
+    const { clientX } = event;
+    const { offsetWidth, offsetLeft } = this.progress.current;
+    const passTime = (Math.abs(clientX - offsetLeft) / offsetWidth) * 100;
+
+    this.audio.currentTime = (this.audio.duration / 100) * passTime;
+    this.passed.current.style.width = `${passTime}%`;
   }
 
   render() {
@@ -81,14 +89,14 @@ class AudioPlayer extends React.PureComponent {
         >
           play
         </button>
-        <div>
-          <input
-            type="range"
-            ref={this.progress}
-            className={css.progress}
-            onInput={this.changeTime}
-            min="0"
-            step="1"
+        <div
+          ref={this.progress}
+          className={css.progress}
+          onClick={this.handleChangeTime}
+        >
+          <div
+            ref={this.passed}
+            className={css.passed}
           />
         </div>
       </fieldset>
