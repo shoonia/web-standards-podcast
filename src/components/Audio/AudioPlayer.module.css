@@ -17,3 +17,32 @@
   background-color: #9ECB1D;
   border-radius: 10px;
 }
+
+.volume {
+  appearance: none;
+  height: 10px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.volume:focus {
+  outline: none;
+}
+
+.volume::range-track {
+  background-color: #e5e5e5;
+  height: 5px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.volume::range-thumb {
+  border: 1px solid #555;
+  height: 15px;
+  width: 15px;
+  border-radius: 100px;
+  background-color: #fff;
+  cursor: pointer;
+  appearance: none;
+  margin-top: -5px;
+}

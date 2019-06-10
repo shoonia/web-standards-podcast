@@ -31,11 +31,7 @@ const Episode = (props) => {
         {title}
       </h1>
       <Time date={date} lang={lang} />
-      <Audio
-        {...audio}
-        lang={lang}
-        label={title}
-      />
+      <Audio {...audio} />
       <Content html={html} />
       <EpisodeNavigation
         {...navigation}
