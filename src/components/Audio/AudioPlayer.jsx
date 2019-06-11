@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import util from './util';
 import css from './AudioPlayer.module.css';
+import Speaker from '../Icons/Speaker';
 
 class AudioPlayer extends React.PureComponent {
   static propTypes = {
@@ -102,7 +103,7 @@ class AudioPlayer extends React.PureComponent {
           type="button"
           onClick={this.handleMuted}
         >
-          muted
+          <Speaker />
         </button>
         <input
           ref={this.volume}
