@@ -20,38 +20,42 @@ class AudioPlayer extends React.PureComponent {
     audio.preload = 'auto';
 
     this.audio = audio;
-    this.progress = React.createRef();
-    this.passed = React.createRef();
-    this.volume = React.createRef();
+    this.timeout = null;
+
+    this.progressRef = React.createRef();
+    this.passedRef = React.createRef();
+    this.volumeRef = React.createRef();
 
     this.state = {
       isDisabled: true,
+      volume: util.getVolume(),
     };
   }
 
   componentDidMount() {
     const { url } = this.props;
+    const { volume } = this.state;
     const time = util.getCurrentTime();
-    const volume = util.getVolume();
-    const passed = this.passed.current;
+    const passed = this.passedRef.current.style;
 
     this.audio.src = url;
 
     this.audio.addEventListener('loadedmetadata', () => {
       this.audio.volume = volume;
       this.audio.currentTime = time;
-      this.volume.current.value = volume;
+      this.volumeRef.current.value = volume;
       this.setState({ isDisabled: false });
     });
 
     this.audio.addEventListener('timeupdate', ({ target }) => {
-      passed.style.width = `${this.calculatePass(target)}%`;
+      passed.width = `${this.calculatePass(target)}%`;
     });
   }
 
   componentWillUnmount() {
     this.audio.pause();
     this.audio = null;
+    clearTimeout(this.timeout);
   }
 
   toggleSound = () => {
@@ -69,58 +73,76 @@ class AudioPlayer extends React.PureComponent {
 
   handleChangeTime = (event) => {
     const { clientX } = event;
-    const { offsetWidth, offsetLeft } = this.progress.current;
+    const { offsetWidth, offsetLeft } = this.progressRef.current;
     const passTime = (Math.abs(clientX - offsetLeft) / offsetWidth) * 100;
 
     this.audio.currentTime = (this.audio.duration / 100) * passTime;
-    this.passed.current.style.width = `${passTime}%`;
+    this.passedRef.current.style.width = `${passTime}%`;
   }
 
   handleMuted = () => {
-    this.audio.muted = !this.audio.muted;
+    const muted = !this.audio.muted;
+
+    this.audio.muted = muted;
+
+    this.setState({
+      volume: muted ? 0 : this.audio.volume,
+    });
   }
 
-  handleChangeVolume = ({ target }) => {
-    this.audio.volume = parseFloat(target.value);
-    util.setVolume(target.value);
+  handleInputVolume = ({ target }) => {
+    const volume = parseFloat(target.value);
+
+    this.audio.volume = volume;
+
+    clearTimeout(this.timeout);
+
+    this.timeout = setTimeout(() => {
+      util.setVolume(target.value);
+      this.setState({ volume });
+    }, 200);
   }
 
   render() {
-    const { isDisabled } = this.state;
+    const { isDisabled, volume } = this.state;
 
     return (
       <fieldset
         disabled={isDisabled}
         className={css.player}
       >
-        <button
-          type="button"
-          onClick={this.toggleSound}
-        >
-          play
-        </button>
-        <button
-          type="button"
-          onClick={this.handleMuted}
-        >
-          <Speaker />
-        </button>
-        <input
-          ref={this.volume}
-          onInput={this.handleChangeVolume}
-          className={css.volume}
-          type="range"
-          max="1"
-          min="0"
-          step="0.001"
-        />
+        <div>
+          <button
+            type="button"
+            onClick={this.toggleSound}
+            className={css.button}
+          >
+            Play
+          </button>
+          <button
+            type="button"
+            onClick={this.handleMuted}
+            className={css.button}
+          >
+            <Speaker volume={volume} />
+          </button>
+          <input
+            ref={this.volumeRef}
+            onInput={this.handleInputVolume}
+            className={css.volume}
+            type="range"
+            max="1"
+            min="0"
+            step="0.001"
+          />
+        </div>
         <div
-          ref={this.progress}
+          ref={this.progressRef}
           className={css.progress}
           onClick={this.handleChangeTime}
         >
           <div
-            ref={this.passed}
+            ref={this.passedRef}
             className={css.passed}
           />
         </div>
