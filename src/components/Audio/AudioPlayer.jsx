@@ -30,6 +30,7 @@ class AudioPlayer extends React.PureComponent {
     this.state = {
       isDisabled: true,
       isPaused: false,
+      isMuted: false,
       volume: util.getVolume(),
     };
   }
@@ -50,6 +51,10 @@ class AudioPlayer extends React.PureComponent {
     });
 
     this.audio.addEventListener('timeupdate', ({ target }) => {
+      if (target.ended) {
+        this.setState({ isPaused: false });
+      }
+
       passed.width = `${this.calculatePass(target)}%`;
     });
   }
@@ -87,13 +92,10 @@ class AudioPlayer extends React.PureComponent {
   }
 
   handleMuted = () => {
-    const muted = !this.audio.muted;
+    const isMuted = !this.audio.muted;
 
-    this.audio.muted = muted;
-
-    this.setState({
-      volume: muted ? 0 : this.audio.volume,
-    });
+    this.audio.muted = isMuted;
+    this.setState({ isMuted });
   }
 
   handleInputVolume = ({ target }) => {
@@ -110,7 +112,12 @@ class AudioPlayer extends React.PureComponent {
   }
 
   render() {
-    const { isDisabled, isPaused, volume } = this.state;
+    const {
+      isDisabled,
+      isPaused,
+      isMuted,
+      volume,
+    } = this.state;
 
     return (
       <fieldset
@@ -130,7 +137,10 @@ class AudioPlayer extends React.PureComponent {
             onClick={this.handleMuted}
             className={css.button}
           >
-            <Speaker volume={volume} />
+            <Speaker
+              volume={volume}
+              isMuted={isMuted}
+            />
           </button>
           <input
             ref={this.volumeRef}
