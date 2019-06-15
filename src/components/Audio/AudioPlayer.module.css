@@ -2,6 +2,11 @@
   border: none;
 }
 
+.controls {
+  display: flex;
+  align-items: center;
+}
+
 .button {
   background-color: transparent;
   width: 45px;
@@ -39,6 +44,7 @@
 .volume {
   appearance: none;
   height: 10px;
+  line-height: 45px;
   background-color: transparent;
   cursor: pointer;
 }

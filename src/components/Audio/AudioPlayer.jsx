@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import util from './util';
 import css from './AudioPlayer.module.css';
 import Speaker from '../Icons/Speaker';
+import Play from '../Icons/Play';
 
 class AudioPlayer extends React.PureComponent {
   static propTypes = {
@@ -28,6 +29,7 @@ class AudioPlayer extends React.PureComponent {
 
     this.state = {
       isDisabled: true,
+      isPaused: false,
       volume: util.getVolume(),
     };
   }
@@ -39,11 +41,11 @@ class AudioPlayer extends React.PureComponent {
     const passed = this.passedRef.current.style;
 
     this.audio.src = url;
+    this.volumeRef.current.value = volume;
 
     this.audio.addEventListener('loadedmetadata', () => {
       this.audio.volume = volume;
       this.audio.currentTime = time;
-      this.volumeRef.current.value = volume;
       this.setState({ isDisabled: false });
     });
 
@@ -59,11 +61,15 @@ class AudioPlayer extends React.PureComponent {
   }
 
   toggleSound = () => {
-    if (this.audio.paused) {
+    const isPaused = this.audio.paused;
+
+    if (isPaused) {
       this.audio.play();
     } else {
       this.audio.pause();
     }
+
+    this.setState({ isPaused });
   };
 
   calculatePass({ duration, currentTime }) {
@@ -104,20 +110,20 @@ class AudioPlayer extends React.PureComponent {
   }
 
   render() {
-    const { isDisabled, volume } = this.state;
+    const { isDisabled, isPaused, volume } = this.state;
 
     return (
       <fieldset
         disabled={isDisabled}
         className={css.player}
       >
-        <div>
+        <div className={css.controls}>
           <button
             type="button"
             onClick={this.toggleSound}
             className={css.button}
           >
-            Play
+            <Play isPaused={isPaused} />
           </button>
           <button
             type="button"

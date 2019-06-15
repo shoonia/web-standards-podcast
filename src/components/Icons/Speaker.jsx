@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 const Speaker = ({ volume }) => (
   <svg
-    width="25px"
-    height="25px"
+    width="25"
+    height="25"
     viewBox="0 0 75 75"
     role="presentation"
     fill="currentColor"
