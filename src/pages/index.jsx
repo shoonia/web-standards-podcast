@@ -7,7 +7,6 @@ import Main from '../layouts/Main';
 export const fetchMainInfo = graphql`
   query fetchMainInfo {
     atomFeed {
-      title
       description
     }
     allAtomEntry(
@@ -30,7 +29,9 @@ export const fetchMainInfo = graphql`
 
 const IndexPage = ({
   data: {
-    atomFeed,
+    atomFeed: {
+      description,
+    },
     allAtomEntry: {
       totalCount,
       nodes,
@@ -46,7 +47,10 @@ const IndexPage = ({
   }));
 
   return (
-    <Main {...atomFeed} nodes={items} />
+    <Main
+      description={description}
+      nodes={items}
+    />
   );
 };
 

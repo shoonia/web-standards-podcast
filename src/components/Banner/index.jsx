@@ -19,7 +19,7 @@ const Banner = () => {
       aria-label="главная"
       className={css.link}
     >
-      <figure className={css.box}>
+      <div className={css.box}>
         <img
           src={file.publicURL}
           alt="Веб-стандарты"
@@ -27,10 +27,10 @@ const Banner = () => {
           width="40"
           className={css.image}
         />
-        <figcaption className={css.title}>
+        <h1 className={css.title}>
           Веб-стандарты
-        </figcaption>
-      </figure>
+        </h1>
+      </div>
     </Link>
   );
 };

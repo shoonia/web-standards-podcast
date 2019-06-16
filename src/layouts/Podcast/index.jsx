@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Document from '../../components/Document';
+import Description from '../../components/Description';
 import Playlist from '../../components/Playlist';
 import Pagination from '../../components/Pagination';
 import urls from '../../urls';
 
 const Podcast = (props) => {
   const {
-    title,
     description,
     nodes,
     navigation,
@@ -19,8 +19,7 @@ const Podcast = (props) => {
       title={`Подкасты. Страница ${navigation.current}`}
       path={urls.buildPodcast(navigation.current)}
     >
-      <h1>{title}</h1>
-      <p>{description}</p>
+      <Description text={description} />
       <Playlist nodes={nodes} />
       <Pagination {...navigation} />
     </Document>

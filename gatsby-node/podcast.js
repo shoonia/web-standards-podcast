@@ -10,7 +10,6 @@ module.exports = async ({ actions, graphql }) => {
       }
     }
     atomFeed {
-      title
       description
     }
     allAtomEntry(
@@ -41,7 +40,6 @@ module.exports = async ({ actions, graphql }) => {
       },
     },
     atomFeed: {
-      title,
       description,
     },
     allAtomEntry: {
@@ -71,7 +69,6 @@ module.exports = async ({ actions, graphql }) => {
       path: buildUrl(current),
       component: PodcastPage,
       context: {
-        title,
         description,
         nodes: items.slice(start, end),
         navigation: {

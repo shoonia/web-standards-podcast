@@ -19,6 +19,7 @@
   border-radius: 100px;
   margin-right: 10px;
   outline: none;
+  cursor: pointer;
 }
 
 .button:focus {
@@ -32,6 +33,7 @@
   border-radius: 10px;
   overflow: hidden;
   margin-top: 10px;
+  cursor: pointer;
 }
 
 .passed {

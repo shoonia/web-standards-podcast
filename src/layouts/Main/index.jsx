@@ -3,12 +3,12 @@ import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 
 import Document from '../../components/Document';
+import Description from '../../components/Description';
 import Playlist from '../../components/Playlist';
 import urls from '../../urls';
 
 const Main = (props) => {
   const {
-    title,
     description,
     nodes,
   } = props;
@@ -17,8 +17,7 @@ const Main = (props) => {
     <Document
       title="Подкасты"
     >
-      <h1>{title}</h1>
-      <p>{description}</p>
+      <Description text={description} />
       <Playlist nodes={nodes} />
       <nav>
         <Link
@@ -32,7 +31,6 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   nodes: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
