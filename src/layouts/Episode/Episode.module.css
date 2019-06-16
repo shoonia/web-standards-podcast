@@ -2,3 +2,7 @@
   display: flex;
   justify-content: space-around;
 }
+
+.time {
+  margin-bottom: 2em;
+}

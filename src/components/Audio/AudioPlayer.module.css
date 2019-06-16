@@ -1,5 +1,7 @@
 .player {
   border: none;
+  margin: 0;
+  padding: 0;
 }
 
 .controls {
@@ -20,6 +22,7 @@
   margin-right: 10px;
   outline: none;
   cursor: pointer;
+  -webkit-touch-callout: none;
 }
 
 .button:focus {
@@ -34,6 +37,7 @@
   overflow: hidden;
   margin-top: 10px;
   cursor: pointer;
+  -webkit-touch-callout: none;
 }
 
 .passed {
@@ -49,6 +53,7 @@
   line-height: 45px;
   background-color: transparent;
   cursor: pointer;
+  -webkit-touch-callout: none;
 }
 
 .volume:focus {

@@ -1,6 +1,12 @@
 .root {
   line-height: 1.15;
   box-sizing: border-box;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  text-rendering: optimizeLegibility;
+  text-size-adjust: 100%;
 }
 
 .content {
@@ -16,6 +22,7 @@ a {
   color: #00A4E6;
   text-decoration: none;
   transition: color .1s ease;
+  -webkit-touch-callout: none;
 }
 
 a:hover {

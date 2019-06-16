@@ -7,6 +7,7 @@ import Content from '../../components/Content';
 import EpisodeNavigation from './EpisodeNavigation';
 import Time from '../../components/Time';
 import urls from '../../urls';
+import css from './Episode.module.css';
 
 const Episode = (props) => {
   const {
@@ -30,7 +31,9 @@ const Episode = (props) => {
       <h1>
         {title}
       </h1>
-      <Time date={date} lang={lang} />
+      <div className={css.time}>
+        <Time date={date} lang={lang} />
+      </div>
       <Audio {...audio} />
       <Content html={html} />
       <EpisodeNavigation

@@ -3,6 +3,8 @@ import React from 'react';
 import xss from 'xss';
 import PropTypes from 'prop-types';
 
+import css from './Content.module.css';
+
 const options = {
   onTag(tag, html) {
     if (tag === 'a') {
@@ -15,7 +17,10 @@ const options = {
 };
 
 const Content = ({ html }) => (
-  <div dangerouslySetInnerHTML={{ __html: xss(html, options) }} />
+  <div
+    className={css.content}
+    dangerouslySetInnerHTML={{ __html: xss(html, options) }}
+  />
 );
 
 Content.propTypes = {
