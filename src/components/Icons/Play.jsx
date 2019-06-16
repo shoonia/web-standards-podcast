@@ -3,18 +3,18 @@ import PropTypes from 'prop-types';
 
 const Play = ({ isPaused }) => (
   <svg
-    width="25"
-    height="25"
-    viewBox="0 0 2048 2048"
+    width="24"
+    height="24"
+    viewBox="-4 -4 25 25"
     role="presentation"
     fill="currentColor"
   >
     <path
-      d="M1704 1055l-1328 738q-23 13-39.5 3t-16.5-36v-1472q0-26 16.5-36t39.5 3l1328 738q23 13 23 31t-23 31z"
+      d="M15.562 8.1L3.87.225C3.052-.337 2 .225 2 1.125v15.75c0 .9 1.052 1.462 1.87.9L15.563 9.9c.584-.45.584-1.35 0-1.8z"
       visibility={isPaused ? 'hidden' : 'visible'}
     />
     <path
-      d="M1792 320v1408q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-1408q0-26 19-45t45-19h1408q26 0 45 19t19 45z"
+      d="M6 1H3c-.6 0-1 .4-1 1v14c0 .6.4 1 1 1h3c.6 0 1-.4 1-1V2c0-.6-.4-1-1-1zm6 0c-.6 0-1 .4-1 1v14c0 .6.4 1 1 1h3c.6 0 1-.4 1-1V2c0-.6-.4-1-1-1h-3z"
       visibility={isPaused ? 'visible' : 'hidden'}
     />
   </svg>
