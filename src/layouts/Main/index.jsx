@@ -5,12 +5,14 @@ import PropTypes from 'prop-types';
 import Document from '../../components/Document';
 import Description from '../../components/Description';
 import Playlist from '../../components/Playlist';
+import LatestEpisode from './LatestEpisode';
 import urls from '../../urls';
 
 const Main = (props) => {
   const {
     description,
     nodes,
+    latest,
   } = props;
 
   return (
@@ -18,6 +20,7 @@ const Main = (props) => {
       title="Подкасты"
     >
       <Description text={description} />
+      <LatestEpisode {...latest} />
       <Playlist nodes={nodes} />
       <nav>
         <Link
@@ -33,6 +36,7 @@ const Main = (props) => {
 Main.propTypes = {
   description: PropTypes.string.isRequired,
   nodes: PropTypes.arrayOf(PropTypes.object).isRequired,
+  latest: PropTypes.shape().isRequired,
 };
 
 export default Main;

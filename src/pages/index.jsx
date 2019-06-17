@@ -11,6 +11,7 @@ export const fetchMainInfo = graphql`
     }
     allAtomEntry(
       limit: 10
+      skip: 1
       sort: {
         fields: [date]
         order: DESC
@@ -25,6 +26,23 @@ export const fetchMainInfo = graphql`
         }
       }
     }
+    latestEpisode: allAtomEntry(
+      limit: 1,
+      sort: {
+        fields: [date],
+        order: DESC
+      }
+    ) {
+      nodes {
+        title
+        date
+        description
+        enclosures {
+          url
+          type
+        }
+      }
+    }
   }`;
 
 const IndexPage = ({
@@ -36,6 +54,7 @@ const IndexPage = ({
       totalCount,
       nodes,
     },
+    latestEpisode,
   },
 }) => {
   const items = nodes.map((node, index) => ({
@@ -46,10 +65,20 @@ const IndexPage = ({
     lang: /[a-z]/.test(node.title) ? 'en' : 'ru',
   }));
 
+  const [episode] = latestEpisode.nodes;
+  const latest = {
+    title: episode.title,
+    date: episode.date,
+    lang: /[a-z]/.test(episode.title) ? 'en' : 'ru',
+    html: episode.description,
+    audio: episode.enclosures[0],
+  };
+
   return (
     <Main
       description={description}
       nodes={items}
+      latest={latest}
     />
   );
 };
