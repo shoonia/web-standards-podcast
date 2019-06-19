@@ -17,7 +17,7 @@ const Main = (props) => {
 
   return (
     <Document
-      title="Подкасты"
+      title="Подкаст"
     >
       <Description text={description} />
       <LatestEpisode {...latest} />

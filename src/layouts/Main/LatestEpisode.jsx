@@ -32,7 +32,6 @@ const LatestEpisode = (props) => {
 LatestEpisode.propTypes = {
   title: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
   lang: PropTypes.string.isRequired,
   html: PropTypes.string.isRequired,
   audio: PropTypes.shape().isRequired,

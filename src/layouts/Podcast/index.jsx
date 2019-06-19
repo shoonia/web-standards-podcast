@@ -16,7 +16,7 @@ const Podcast = (props) => {
 
   return (
     <Document
-      title={`Подкасты. Страница ${navigation.current}`}
+      title={`Все выпуски. Страница ${navigation.current}`}
       path={urls.buildPodcast(navigation.current)}
     >
       <Description text={description} />
