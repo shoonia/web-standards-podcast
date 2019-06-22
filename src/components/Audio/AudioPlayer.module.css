@@ -17,8 +17,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid #00A4E6;
-  color: #00A4E6;
+  border: 2px solid #1D77C3;
+  color: #1D77C3;
   border-radius: 100px;
   margin-right: 8px;
   outline: none;
@@ -32,7 +32,7 @@
 }
 
 .button:hover {
-  background-color: #00A4E6;
+  background-color: #1D77C3;
   color: white;
 }
 
@@ -50,7 +50,7 @@
 .passed {
   width: 0;
   height: 6px;
-  background-color: #00A4E6;
+  background-color: #1D77C3;
   border-radius: 10px;
 }
 
@@ -75,7 +75,7 @@
 }
 
 .volume::range-thumb {
-  border: 2px solid #00A4E6;
+  border: 2px solid #1D77C3;
   height: 17px;
   width: 17px;
   border-radius: 100px;

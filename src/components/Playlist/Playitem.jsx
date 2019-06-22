@@ -19,6 +19,7 @@ const Playitem = (props) => {
     <li>
       <article
         lang={lang}
+        className={css.episode}
       >
         <h2 className={css.title}>
           <Link
