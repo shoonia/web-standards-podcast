@@ -57,19 +57,21 @@ const IndexPage = ({
     latestEpisode,
   },
 }) => {
+  const getLang = text => (/[a-z]/.test(text) ? 'en' : 'ru');
+  const [episode] = latestEpisode.nodes;
+
   const items = nodes.map((node, index) => ({
     title: node.title,
     date: node.date,
     description: node.itunes_summary._,
-    episode: totalCount - index,
-    lang: /[a-z]/.test(node.title) ? 'en' : 'ru',
+    episode: totalCount - (index + 1),
+    lang: getLang(node.title),
   }));
 
-  const [episode] = latestEpisode.nodes;
   const latest = {
     title: episode.title,
     date: episode.date,
-    lang: /[a-z]/.test(episode.title) ? 'en' : 'ru',
+    lang: getLang(episode.title),
     html: episode.description,
     audio: episode.enclosures[0],
   };

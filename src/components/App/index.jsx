@@ -79,6 +79,8 @@ const App = (props) => {
         type="application/rss+xml"
         title={meta.description}
       />
+      <link rel="preconnect" href="https://web-standards.ru" />
+      <link rel="dns-prefetch" href="https://web-standards.ru" />
       <body className={css.content} />
     </Helmet>
   );

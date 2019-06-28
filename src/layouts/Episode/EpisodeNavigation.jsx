@@ -9,8 +9,6 @@ import css from './Episode.module.css';
 const EpisodeNavigation = ({ current, prevUrl, nextUrl }) => (
   <>
     <Helmet>
-      <link rel="preconnect" href="https://web-standards.ru" />
-      <link rel="dns-prefetch" href="https://web-standards.ru" />
       {(prevUrl !== null) && (
         <link
           rel="prev"
