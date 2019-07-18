@@ -15,7 +15,7 @@ class AudioPlayer extends React.PureComponent {
 
   constructor(props) {
     super(props);
-    const audio = new Audio();
+    const audio = new window.Audio();
 
     audio.type = props.type;
     audio.preload = 'auto';
@@ -55,7 +55,7 @@ class AudioPlayer extends React.PureComponent {
         this.setState({ isPaused: false });
       }
 
-      passed.width = `${this.calculatePass(target)}%`;
+      passed.width = `${util.calculatePass(target)}%`;
     });
   }
 
@@ -76,11 +76,6 @@ class AudioPlayer extends React.PureComponent {
 
     this.setState({ isPaused });
   };
-
-  calculatePass({ duration, currentTime }) {
-    if (duration === 0) return 0;
-    return (currentTime / duration) * 100;
-  }
 
   handleChangeTime = (event) => {
     const { clientX } = event;
