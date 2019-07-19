@@ -1,5 +1,5 @@
 /* eslint-disable global-require */
-const ladash = require('lodash');
+const { cloneDeepWith, isObject } = require('lodash');
 const miniClassNames = require('mini-css-class-name/css-loader');
 
 const generate = miniClassNames();
@@ -20,8 +20,8 @@ exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
 
   const config = getConfig();
 
-  config.module.rules = config.module.rules.map(item => ladash.cloneDeepWith(item, (value) => {
-    if (value && value.modules) {
+  config.module.rules = config.module.rules.map(item => cloneDeepWith(item, (value) => {
+    if (isObject(value) && value.modules) {
       return {
         ...value,
         localIdentName: undefined,
