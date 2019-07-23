@@ -51,12 +51,13 @@ class AudioPlayer extends React.PureComponent {
     });
 
     this.audio.addEventListener('timeupdate', ({ target }) => {
-      if (target.ended) {
-        this.setState({ isPaused: false });
-      }
-
       passed.width = `${util.calculatePass(target)}%`;
     });
+
+    this.audio.addEventListener('ended', () => {
+      passed.width = '0';
+      this.setState({ isPaused: false });
+    })
   }
 
   componentWillUnmount() {

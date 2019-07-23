@@ -11,17 +11,17 @@
   },
   "dependencies": {
     "autoprefixer": "^9.6.1",
-    "gatsby": "^2.13.28",
-    "gatsby-plugin-manifest": "^2.2.3",
+    "gatsby": "^2.13.34",
+    "gatsby-plugin-manifest": "^2.2.4",
     "gatsby-plugin-postcss": "^2.1.2",
     "gatsby-plugin-react-helmet": "^3.1.2",
-    "gatsby-plugin-sharp": "^2.2.8",
+    "gatsby-plugin-sharp": "^2.2.9",
     "gatsby-plugin-sitemap": "^2.2.3",
     "gatsby-source-atom": "^0.2.0",
-    "gatsby-source-filesystem": "^2.1.5",
+    "gatsby-source-filesystem": "^2.1.6",
     "gatsby-transformer-sharp": "^2.2.4",
     "lodash": "^4.17.15",
-    "mini-css-class-name": "^0.5.1",
+    "mini-css-class-name": "^0.6.0",
     "postcss-input-range": "^4.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
@@ -31,11 +31,11 @@
     "xss": "^1.0.6"
   },
   "devDependencies": {
-    "eslint": "^6.0.1",
+    "eslint": "^6.1.0",
     "eslint-config-airbnb": "^17.1.1",
-    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.14.2"
+    "eslint-plugin-react": "^7.14.3"
   },
   "keywords": [
     "podcast"
