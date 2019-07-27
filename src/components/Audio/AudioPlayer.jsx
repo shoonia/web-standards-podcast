@@ -11,6 +11,7 @@ class AudioPlayer extends React.PureComponent {
   static propTypes = {
     url: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
+    duration: PropTypes.string.isRequired,
   }
 
   constructor(props) {
@@ -115,6 +116,8 @@ class AudioPlayer extends React.PureComponent {
       volume,
     } = this.state;
 
+    const { duration } = this.props;
+
     return (
       <fieldset
         disabled={isDisabled}
@@ -147,6 +150,9 @@ class AudioPlayer extends React.PureComponent {
             min="0"
             step="0.001"
           />
+          <span className={css.duration}>
+            {duration}
+          </span>
         </div>
         <div
           ref={this.progressRef}

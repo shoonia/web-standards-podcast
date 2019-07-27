@@ -37,6 +37,7 @@ export const fetchMainInfo = graphql`
         title
         date
         description
+        itunes_duration { _ }
         enclosures {
           url
           type
@@ -73,7 +74,10 @@ const IndexPage = ({
     date: episode.date,
     lang: getLang(episode.title),
     html: episode.description,
-    audio: episode.enclosures[0],
+    audio: {
+      ...episode.enclosures[0],
+      duration: episode.itunes_duration._,
+    },
   };
 
   return (

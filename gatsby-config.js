@@ -35,6 +35,7 @@ module.exports = {
         source: 'https://web-standards.ru/podcast/feed/',
         additionalEntryFields: [
           'itunes:summary',
+          'itunes:duration',
         ],
       },
     },

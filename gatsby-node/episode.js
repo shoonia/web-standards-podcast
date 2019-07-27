@@ -2,7 +2,6 @@ const xss = require('xss');
 
 module.exports = async ({ actions, graphql }) => {
   const EpisodePage = require.resolve('../src/templates/EpisodePage.jsx');
-  const { createPage } = actions;
 
   const { data, errors } = await graphql(`
   {
@@ -17,9 +16,8 @@ module.exports = async ({ actions, graphql }) => {
         title
         date
         description
-        itunes_summary {
-          _
-        }
+        itunes_summary { _ }
+        itunes_duration { _ }
         enclosures {
           url
           type
@@ -49,7 +47,7 @@ module.exports = async ({ actions, graphql }) => {
   nodes.forEach((node, index) => {
     const episode = index + 1;
 
-    createPage({
+    actions.createPage({
       path: buildUrl(episode),
       component: EpisodePage,
       context: {
@@ -59,7 +57,10 @@ module.exports = async ({ actions, graphql }) => {
         episode,
         lang: /[a-z]/.test(node.title) ? 'en' : 'ru',
         html: xss(node.description),
-        audio: node.enclosures[0],
+        audio: {
+          ...node.enclosures[0],
+          duration: node.itunes_duration._,
+        },
         navigation: {
           prevUrl: (index > 0) ? (siteUrl + buildUrl(index)) : null,
           nextUrl: (episode < totalCount) ? (siteUrl + buildUrl(episode + 1)) : null,
