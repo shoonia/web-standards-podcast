@@ -1,5 +1,5 @@
 /* eslint-disable global-require */
-const { cloneDeepWith, isObject } = require('lodash');
+const { cloneDeepWith } = require('lodash');
 const miniClassNames = require('mini-css-class-name/css-loader');
 
 const generate = miniClassNames();
@@ -18,18 +18,20 @@ exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
     });
   }
 
-  const config = getConfig();
+  if (stage.includes('build')) {
+    const config = getConfig();
 
-  config.module.rules = config.module.rules.map(item => cloneDeepWith(item, (value) => {
-    if (isObject(value) && value.modules) {
-      return {
-        ...value,
-        localIdentName: undefined,
-        getLocalIdent: generate,
-      };
-    }
-    return undefined;
-  }));
+    config.module.rules = cloneDeepWith(config.module.rules, (value, key) => {
+      if (key === 'options' && value.modules) {
+        return {
+          ...value,
+          localIdentName: undefined,
+          getLocalIdent: generate,
+        };
+      }
+      return undefined;
+    });
 
-  actions.replaceWebpackConfig(config);
+    actions.replaceWebpackConfig(config);
+  }
 };

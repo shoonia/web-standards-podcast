@@ -1,6 +1,5 @@
 module.exports = async ({ actions, graphql }) => {
   const PodcastPage = require.resolve('../src/templates/PodcastPage.jsx');
-  const { createPage } = actions;
 
   const { data, errors } = await graphql(`
   {
@@ -22,9 +21,7 @@ module.exports = async ({ actions, graphql }) => {
       nodes {
         title
         date
-        itunes_summary {
-          _
-        }
+        itunes_summary { _ }
       }
     }
   }`);
@@ -65,7 +62,7 @@ module.exports = async ({ actions, graphql }) => {
     const start = index * PAGE_LIMIT;
     const end = start + PAGE_LIMIT;
 
-    createPage({
+    actions.createPage({
       path: buildUrl(current),
       component: PodcastPage,
       context: {

@@ -21,9 +21,7 @@ export const fetchMainInfo = graphql`
       nodes {
         title
         date
-        itunes_summary {
-          _
-        }
+        itunes_summary { _ }
       }
     }
     latestEpisode: allAtomEntry(

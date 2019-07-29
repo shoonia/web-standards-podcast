@@ -1,4 +1,4 @@
-/* eslint-disable no-restricted-globals */
+/* eslint-disable no-restricted-globals, no-bitwise */
 const withZero = n => ((n < 10) ? `0${n}` : String(n));
 
 export default {
@@ -25,12 +25,14 @@ export default {
     return (currentTime / duration) * 100;
   },
 
-  timeLeft(sec) {
+  remainingTime({ duration, currentTime }) {
+    const sec = ~~(duration - currentTime);
+
     if (sec < 1) return '00:00:00';
 
-    const H = Math.floor(sec / (60 * 60));
-    const M = Math.floor((sec - H * 60 * 60) / 60);
-    const S = Math.floor(sec - ((H * 60 + M) * 60));
+    const H = ~~(sec / (60 * 60));
+    const M = ~~((sec - H * 60 * 60) / 60);
+    const S = ~~(sec - ((H * 60 + M) * 60));
 
     return `${withZero(H)}:${withZero(M)}:${withZero(S)}`;
   },

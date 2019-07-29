@@ -27,6 +27,7 @@ class AudioPlayer extends React.PureComponent {
     this.progressRef = React.createRef();
     this.passedRef = React.createRef();
     this.volumeRef = React.createRef();
+    this.timerRef = React.createRef();
 
     this.state = {
       isDisabled: true,
@@ -37,13 +38,15 @@ class AudioPlayer extends React.PureComponent {
   }
 
   componentDidMount() {
-    const { url } = this.props;
+    const { url, duration } = this.props;
     const { volume } = this.state;
     const time = util.getCurrentTime();
     const passed = this.passedRef.current.style;
+    const timer = this.timerRef.current;
 
     this.audio.src = url;
     this.volumeRef.current.value = volume;
+    timer.value = duration;
 
     this.audio.addEventListener('loadedmetadata', () => {
       this.audio.volume = volume;
@@ -52,11 +55,13 @@ class AudioPlayer extends React.PureComponent {
     });
 
     this.audio.addEventListener('timeupdate', ({ target }) => {
+      timer.value = util.remainingTime(target);
       passed.width = `${util.calculatePass(target)}%`;
     });
 
     this.audio.addEventListener('ended', () => {
       passed.width = '0';
+      timer.value = duration
       this.setState({ isPaused: false });
     })
   }
@@ -116,8 +121,6 @@ class AudioPlayer extends React.PureComponent {
       volume,
     } = this.state;
 
-    const { duration } = this.props;
-
     return (
       <fieldset
         disabled={isDisabled}
@@ -150,9 +153,10 @@ class AudioPlayer extends React.PureComponent {
             min="0"
             step="0.001"
           />
-          <span className={css.duration}>
-            {duration}
-          </span>
+          <output
+            ref={this.timerRef}
+            className={css.duration}
+          />
         </div>
         <div
           ref={this.progressRef}
