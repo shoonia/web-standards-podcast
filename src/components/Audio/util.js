@@ -21,8 +21,8 @@ export default {
   },
 
   calculatePass({ duration, currentTime }) {
-    if (duration === 0) return 0;
-    return (currentTime / duration) * 100;
+    if (duration === 0) return '0';
+    return ((currentTime / duration) * 100).toFixed(1);
   },
 
   remainingTime({ duration, currentTime }) {

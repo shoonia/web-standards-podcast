@@ -63,7 +63,7 @@ class AudioPlayer extends React.PureComponent {
       passed.width = '0';
       timer.value = duration
       this.setState({ isPaused: false });
-    })
+    });
   }
 
   componentWillUnmount() {
