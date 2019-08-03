@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  font-size: 1.1em;
 }
 
 .item,
@@ -13,4 +14,12 @@
   margin-left: 1em;
   margin-right: 1em;
   list-style-type: none;
+  user-select: none;
+}
+
+.active > a,
+.disabled > a {
+  cursor: default;
+  pointer-events: none;
+  color: #777;
 }
