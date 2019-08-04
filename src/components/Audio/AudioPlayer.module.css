@@ -8,6 +8,7 @@
 .controls {
   display: flex;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 .button {
@@ -42,7 +43,6 @@
   background-color: #e5e5e5;
   border-radius: 10px;
   overflow: hidden;
-  margin-top: 9px;
   cursor: pointer;
   -webkit-touch-callout: none;
 }
@@ -54,17 +54,32 @@
   border-radius: 10px;
 }
 
+.muted {
+  display: flex;
+  align-items: center;
+}
+
 .volume {
   appearance: none;
   height: 10px;
   line-height: 45px;
   background-color: transparent;
   cursor: pointer;
-  width: 100px;
+  transition: margin 150ms ease, width 150ms ease, opacity 150ms ease;
+  width: 0;
+  max-width: 120px;
+  opacity: 0;
 }
 
 .volume:focus {
   outline: none;
+}
+
+.volume:focus,
+.button:focus + .volume,
+.muted:hover .volume {
+  width: 100%;
+  opacity: 1;
 }
 
 .volume::range-track {
@@ -86,5 +101,7 @@
 }
 
 .duration {
-  margin-left: auto;
+  margin-left: 10px;
+  font-weight: bold;
+  font-family: monospace;
 }

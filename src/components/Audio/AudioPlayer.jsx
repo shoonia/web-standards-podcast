@@ -30,7 +30,6 @@ class AudioPlayer extends React.PureComponent {
     this.timerRef = React.createRef();
 
     this.state = {
-      isDisabled: true,
       isPaused: false,
       isMuted: false,
       volume: util.getVolume(),
@@ -51,7 +50,6 @@ class AudioPlayer extends React.PureComponent {
     this.audio.addEventListener('loadedmetadata', () => {
       this.audio.volume = volume;
       this.audio.currentTime = time;
-      this.setState({ isDisabled: false });
     });
 
     this.audio.addEventListener('timeupdate', ({ target }) => {
@@ -114,18 +112,10 @@ class AudioPlayer extends React.PureComponent {
   }
 
   render() {
-    const {
-      isDisabled,
-      isPaused,
-      isMuted,
-      volume,
-    } = this.state;
+    const { isPaused, isMuted, volume } = this.state;
 
     return (
-      <fieldset
-        disabled={isDisabled}
-        className={css.player}
-      >
+      <div className={css.player}>
         <div className={css.controls}>
           <button
             type="button"
@@ -134,41 +124,45 @@ class AudioPlayer extends React.PureComponent {
           >
             <Play isPaused={isPaused} />
           </button>
-          <button
-            type="button"
-            onClick={this.handleMuted}
-            className={css.button}
-          >
-            <Speaker
-              volume={volume}
-              isMuted={isMuted}
+          <div className={css.muted}>
+            <button
+              type="button"
+              onClick={this.handleMuted}
+              className={css.button}
+            >
+              <Speaker
+                volume={volume}
+                isMuted={isMuted}
+              />
+            </button>
+            <input
+              ref={this.volumeRef}
+              onInput={this.handleInputVolume}
+              className={css.volume}
+              type="range"
+              max="1"
+              min="0"
+              step="0.001"
             />
-          </button>
-          <input
-            ref={this.volumeRef}
-            onInput={this.handleInputVolume}
-            className={css.volume}
-            type="range"
-            max="1"
-            min="0"
-            step="0.001"
-          />
+          </div>
+        </div>
+        <div className={css.controls}>
+          <div
+            ref={this.progressRef}
+            className={css.progress}
+            onClick={this.handleChangeTime}
+          >
+            <div
+              ref={this.passedRef}
+              className={css.passed}
+            />
+          </div>
           <output
             ref={this.timerRef}
             className={css.duration}
           />
         </div>
-        <div
-          ref={this.progressRef}
-          className={css.progress}
-          onClick={this.handleChangeTime}
-        >
-          <div
-            ref={this.passedRef}
-            className={css.passed}
-          />
-        </div>
-      </fieldset>
+      </div>
     );
   }
 }
