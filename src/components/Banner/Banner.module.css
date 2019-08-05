@@ -23,5 +23,5 @@
 
 .link {
   text-decoration: none;
-  color: #FFF;
+  color: var(--light);
 }

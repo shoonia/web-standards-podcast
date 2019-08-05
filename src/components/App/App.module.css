@@ -1,4 +1,12 @@
 .root {
+  --primary: #153543;
+  --primary-light: #3263AE;
+  --secondary: #2FD199;
+  --light: #F2F2F2;
+  --font-color: #333;
+  --grey: #777;
+  --grey-light: #E0E0E0;
+  
   line-height: 1.15;
   box-sizing: border-box;
   -moz-osx-font-smoothing: grayscale;
@@ -15,17 +23,23 @@
   font-size: 16px;
   padding: 0;
   margin: 0;
-  color: #333;
-  -webkit-overflow-scrolling:touch;
+  color: var(--font-color);
+  -webkit-overflow-scrolling: touch;
+  background-color: var(--light);
+}
+
+::selection {
+  background-color: var(--secondary);
+  color: var(--light);
 }
 
 a {
-  color: #1D77C3;
+  color: var(--primary-light);
   text-decoration: none;
   transition: color .1s ease;
   -webkit-touch-callout: none;
 }
 
 a:hover {
-  color: #9ECB1D;
+  color: var(--secondary);
 }

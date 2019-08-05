@@ -21,5 +21,5 @@
 .disabled > a {
   cursor: default;
   pointer-events: none;
-  color: #777;
+  color: var(--grey);
 }
