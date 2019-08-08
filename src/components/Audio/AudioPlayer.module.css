@@ -66,20 +66,11 @@
   background-color: transparent;
   cursor: pointer;
   transition: margin 150ms ease, width 150ms ease, opacity 150ms ease;
-  width: 0;
   max-width: 120px;
-  opacity: 0;
 }
 
 .volume:focus {
   outline: none;
-}
-
-.volume:focus,
-.button:focus + .volume,
-.muted:hover .volume {
-  width: 100%;
-  opacity: 1;
 }
 
 .volume::range-track {
@@ -104,4 +95,18 @@
   margin-left: 10px;
   font-weight: bold;
   font-family: monospace;
+}
+
+@media (min-width: 768px) {
+  .volume {
+    width: 0;
+    opacity: 0;
+  }
+
+  .volume:focus,
+  .button:focus + .volume,
+  .muted:hover .volume {
+    width: 100%;
+    opacity: 1;
+  }
 }
