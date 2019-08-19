@@ -25,9 +25,7 @@ export default {
     return ((currentTime / duration) * 100).toFixed(1);
   },
 
-  remainingTime({ duration, currentTime }) {
-    const sec = ~~(duration - currentTime);
-
+  remainingTime(sec) {
     if (sec < 1) return '00:00:00';
 
     const H = ~~(sec / (60 * 60));

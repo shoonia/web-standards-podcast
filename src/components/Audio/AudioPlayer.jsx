@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -37,30 +36,53 @@ class AudioPlayer extends React.PureComponent {
   }
 
   componentDidMount() {
+    const { audio } = this;
     const { url, duration } = this.props;
     const { volume } = this.state;
     const time = util.getCurrentTime();
+    const progress = this.progressRef.current;
     const passed = this.passedRef.current.style;
     const timer = this.timerRef.current;
 
-    this.audio.src = url;
-    this.volumeRef.current.value = volume;
+    audio.src = url;
     timer.value = duration;
+    this.volumeRef.current.value = volume;
 
-    this.audio.addEventListener('loadedmetadata', () => {
-      this.audio.volume = volume;
-      this.audio.currentTime = time;
+    audio.addEventListener('loadedmetadata', () => {
+      audio.volume = volume;
+      audio.currentTime = time;
     });
 
-    this.audio.addEventListener('timeupdate', ({ target }) => {
-      timer.value = util.remainingTime(target);
-      passed.width = `${util.calculatePass(target)}%`;
+    audio.addEventListener('timeupdate', () => {
+      const sec = Math.ceil(audio.duration - audio.currentTime);
+
+      timer.value = util.remainingTime(sec);
+      passed.width = `${util.calculatePass(audio)}%`;
     });
 
-    this.audio.addEventListener('ended', () => {
+    audio.addEventListener('ended', () => {
       passed.width = '0';
-      timer.value = duration
+      timer.value = duration;
       this.setState({ isPaused: false });
+    });
+
+    progress.addEventListener('click', (event) => {
+      const point = this.getPointPosition(event.clientX);
+
+      audio.currentTime = (audio.duration / 100) * point;
+      passed.width = `${point}%`;
+    });
+
+    progress.addEventListener('mousemove', (event) => {
+      const point = this.getPointPosition(event.clientX);
+      const sec = Math.round(audio.duration * point / 100);
+      const rt = util.remainingTime(sec);
+
+      progress.setAttribute('title', rt);
+    });
+
+    progress.addEventListener('mouseout', () => {
+      progress.setAttribute('title', '');
     });
   }
 
@@ -82,13 +104,9 @@ class AudioPlayer extends React.PureComponent {
     this.setState({ isPaused });
   };
 
-  handleChangeTime = (event) => {
-    const { clientX } = event;
+  getPointPosition = (clientX) => {
     const { offsetWidth, offsetLeft } = this.progressRef.current;
-    const passTime = (Math.abs(clientX - offsetLeft) / offsetWidth) * 100;
-
-    this.audio.currentTime = (this.audio.duration / 100) * passTime;
-    this.passedRef.current.style.width = `${passTime}%`;
+    return (Math.abs(clientX - offsetLeft) / offsetWidth) * 100;
   }
 
   handleMuted = () => {
@@ -150,7 +168,6 @@ class AudioPlayer extends React.PureComponent {
           <div
             ref={this.progressRef}
             className={css.progress}
-            onClick={this.handleChangeTime}
           >
             <div
               ref={this.passedRef}
