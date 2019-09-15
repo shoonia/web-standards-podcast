@@ -47,7 +47,7 @@ module.exports = async ({ actions, graphql }) => {
 
   const PAGE_LIMIT = 25;
   const totalPages = Math.ceil(totalCount / PAGE_LIMIT);
-  const buildUrl = number => `/podcast/${number}`;
+  const buildUrl = (number) => `/podcast/${number}`;
 
   const items = nodes.map((node, index) => ({
     title: node.title,

@@ -1,4 +1,4 @@
 export default {
-  buildPodcast: number => `/podcast/${number}`,
-  buildEpisode: number => `/episode/${number}`,
+  buildPodcast: (number) => `/podcast/${number}`,
+  buildEpisode: (number) => `/episode/${number}`,
 };

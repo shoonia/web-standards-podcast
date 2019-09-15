@@ -1,5 +1,5 @@
 /* eslint-disable no-restricted-globals, no-bitwise */
-const withZero = n => ((n < 10) ? `0${n}` : String(n));
+const withZero = (n) => ((n < 10) ? `0${n}` : String(n));
 
 export default {
   getVolume() {

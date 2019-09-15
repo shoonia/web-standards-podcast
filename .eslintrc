@@ -4,7 +4,8 @@
     "airbnb"
   ],
   "plugins": [
-    "react"
+    "react",
+    "react-hooks"
   ],
   "parserOptions": {
     "ecmaVersion": 2018

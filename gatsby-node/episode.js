@@ -42,7 +42,7 @@ module.exports = async ({ actions, graphql }) => {
     },
   } = data;
 
-  const buildUrl = number => `/episode/${number}`;
+  const buildUrl = (number) => `/episode/${number}`;
 
   nodes.forEach((node, index) => {
     const episode = index + 1;

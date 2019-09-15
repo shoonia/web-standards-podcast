@@ -1,5 +1,5 @@
 /* eslint-disable global-require */
-const { cloneDeepWith } = require('lodash');
+const cloneDeepWith = require('lodash/cloneDeepWith');
 const miniClassNames = require('mini-css-class-name/css-loader');
 
 const generate = miniClassNames();
