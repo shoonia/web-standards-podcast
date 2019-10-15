@@ -7,37 +7,37 @@
     "develop": "gatsby develop",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "fix": "eslint . --fix"
+    "lint": "eslint ./**/*.{js,jsx} --fix"
   },
   "dependencies": {
-    "autoprefixer": "^9.6.1",
-    "gatsby": "^2.15.15",
-    "gatsby-plugin-manifest": "^2.2.16",
-    "gatsby-plugin-postcss": "^2.1.7",
-    "gatsby-plugin-react-helmet": "^3.1.7",
-    "gatsby-plugin-sharp": "^2.2.22",
-    "gatsby-plugin-sitemap": "^2.2.12",
+    "autoprefixer": "^9.6.5",
+    "gatsby": "^2.16.3",
+    "gatsby-plugin-manifest": "^2.2.23",
+    "gatsby-plugin-postcss": "^2.1.13",
+    "gatsby-plugin-react-helmet": "^3.1.13",
+    "gatsby-plugin-sharp": "^2.2.31",
+    "gatsby-plugin-sitemap": "^2.2.19",
     "gatsby-source-atom": "^0.2.0",
-    "gatsby-source-filesystem": "^2.1.22",
-    "gatsby-transformer-sharp": "^2.2.14",
+    "gatsby-source-filesystem": "^2.1.33",
+    "gatsby-transformer-sharp": "^2.2.23",
     "lodash": "^4.17.15",
     "mini-css-class-name": "^0.6.1",
     "postcss-input-range": "^4.0.0",
     "prop-types": "^15.7.2",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
     "react-helmet": "^5.2.1",
     "react-paginate": "^6.3.0",
     "xss": "^1.0.6"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
-    "eslint": "^6.4.0",
+    "eslint": "^6.5.1",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.14.3",
-    "eslint-plugin-react-hooks": "^2.0.1"
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-react-hooks": "^2.1.2"
   },
   "keywords": [
     "podcast"

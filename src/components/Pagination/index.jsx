@@ -8,22 +8,8 @@ import urls from '../../urls';
 import css from './Pagination.module.css';
 
 class Pagination extends React.PureComponent {
-  static defaultProps = {
-    prevUrl: null,
-    nextUrl: null,
-  };
-
-  static propTypes = {
-    prevUrl: PropTypes.string,
-    nextUrl: PropTypes.string,
-    totalPages: PropTypes.number.isRequired,
-    current: PropTypes.number.isRequired,
-  };
-
   ariaLabelBuilder = (pageNumber, isActive) => (
-    isActive
-      ? `cтраница ${pageNumber}, текущая страница`
-      : `cтраница ${pageNumber}`
+    `cтраница ${pageNumber}${isActive ? ', текущая страница' : ''}`
   );
 
   onPageChangeHandler = ({ selected }) => {
@@ -96,5 +82,17 @@ class Pagination extends React.PureComponent {
     );
   }
 }
+
+Pagination.defaultProps = {
+  prevUrl: null,
+  nextUrl: null,
+};
+
+Pagination.propTypes = {
+  prevUrl: PropTypes.string,
+  nextUrl: PropTypes.string,
+  totalPages: PropTypes.number.isRequired,
+  current: PropTypes.number.isRequired,
+};
 
 export default Pagination;

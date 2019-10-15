@@ -7,12 +7,6 @@ import Speaker from '../Icons/Speaker';
 import Play from '../Icons/Play';
 
 class AudioPlayer extends React.PureComponent {
-  static propTypes = {
-    url: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-    duration: PropTypes.string.isRequired,
-  }
-
   constructor(props) {
     super(props);
     const audio = new window.Audio();
@@ -75,7 +69,7 @@ class AudioPlayer extends React.PureComponent {
 
     progress.addEventListener('mousemove', (event) => {
       const point = this.getPointPosition(event.clientX);
-      const sec = Math.round(audio.duration * point / 100);
+      const sec = Math.round((audio.duration * point) / 100);
       const rt = util.remainingTime(sec);
 
       progress.setAttribute('title', rt);
@@ -183,5 +177,11 @@ class AudioPlayer extends React.PureComponent {
     );
   }
 }
+
+AudioPlayer.propTypes = {
+  url: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  duration: PropTypes.string.isRequired,
+};
 
 export default AudioPlayer;

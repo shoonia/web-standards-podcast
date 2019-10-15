@@ -5,7 +5,7 @@ import Playitem from './Playitem';
 import css from './Playlist.module.css';
 
 const Playlist = ({ nodes }) => {
-  const items = nodes.map(node => (
+  const items = nodes.map((node) => (
     <Playitem key={node.episode} {...node} />
   ));
 

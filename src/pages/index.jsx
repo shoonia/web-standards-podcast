@@ -56,7 +56,7 @@ const IndexPage = ({
     latestEpisode,
   },
 }) => {
-  const getLang = text => (/[a-z]/.test(text) ? 'en' : 'ru');
+  const getLang = (text) => (/[a-z]/.test(text) ? 'en' : 'ru');
   const [episode] = latestEpisode.nodes;
 
   const items = nodes.map((node, index) => ({
