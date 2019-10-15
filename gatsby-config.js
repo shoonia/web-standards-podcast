@@ -10,6 +10,7 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     'gatsby-plugin-postcss',
+    'gatsby-plugin-mini-css-class-name',
     {
       resolve: 'gatsby-source-filesystem',
       options: {

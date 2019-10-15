@@ -5559,6 +5559,13 @@ gatsby-plugin-manifest@^2.2.23:
     semver "^5.7.1"
     sharp "^0.23.1"
 
+gatsby-plugin-mini-css-class-name@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-mini-css-class-name/-/gatsby-plugin-mini-css-class-name-1.0.0.tgz#8103797fc194bcef0b0630e0bbb14ac189fbc5ed"
+  integrity sha512-3ziKp24iDNGiPJvsou27vhpHFbVBtkSPdglBUu7QOYePSM1Rz/lwI3X1ZSjonQ/yNY1U9M9k8BfpIpQATsU4sw==
+  dependencies:
+    mini-css-class-name "^0.6.3"
+
 gatsby-plugin-page-creator@^2.1.27:
   version "2.1.27"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-page-creator/-/gatsby-plugin-page-creator-2.1.27.tgz#5df6765c8c35b9ec43f4faed55878fe25b35733e"
@@ -8091,10 +8098,10 @@ min-document@^2.19.0:
   dependencies:
     dom-walk "^0.1.0"
 
-mini-css-class-name@^0.6.1:
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/mini-css-class-name/-/mini-css-class-name-0.6.1.tgz#1a0df4a5043ae4447215179620a7d9e2e0ee00bd"
-  integrity sha512-HaBlQMnPu8NYCBPgAAym8Wi1ghpzHQFK3zmGQgomPfHRQu51KeOQyiL4D5/vhqm1EElB7WOFqTlXVhtmnDjNYQ==
+mini-css-class-name@^0.6.3:
+  version "0.6.3"
+  resolved "https://registry.yarnpkg.com/mini-css-class-name/-/mini-css-class-name-0.6.3.tgz#457dd982800541f678bec61eafba540fb2ce3957"
+  integrity sha512-VEpuWbSDNQKuwS/MY9wOHG1VbatH5s9j012GDcSWcsofEiv/K0RJQ2Fd6Ds1vfFiJ6F/yQ6yCIqvlyJnbVjDBg==
 
 mini-css-extract-plugin@^0.8.0:
   version "0.8.0"
