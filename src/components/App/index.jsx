@@ -5,16 +5,14 @@ import T from 'prop-types';
 import { fetchDescription } from './query';
 import css from './App.module.css';
 
-function App(props) {
+function App({
+  title,
+  description,
+  image,
+  lang,
+  path,
+}) {
   const { meta, siteUrl } = fetchDescription();
-  const {
-    title,
-    description,
-    image,
-    lang,
-    path,
-  } = props;
-
   const $description = description || meta.description;
   const $image = image || meta.image.url;
   const $lang = lang || meta.language;
