@@ -1,9 +1,41 @@
 const xss = require('xss');
 
+const options = {
+  onIgnoreTagAttr(tag, name, value) {
+    if (name !== 'class') {
+      return '';
+    }
+
+    return `${name}="${xss.escapeAttrValue(value)}"`;
+  },
+
+  onTag(tag, html) {
+    if (tag === 'a') {
+      const a = html.slice(0, -1);
+      return `${a} target="_blank" rel="noopener noreferrer">`;
+    }
+
+    return html;
+  },
+};
+
 module.exports = async ({ actions, graphql }) => {
   const EpisodePage = require.resolve('../src/templates/EpisodePage.jsx');
 
-  const { data, errors } = await graphql(`
+  const {
+    data: {
+      site: {
+        siteMetadata: {
+          siteUrl,
+        },
+      },
+      allAtomEntry: {
+        totalCount,
+        nodes,
+      },
+    },
+    errors,
+  } = await graphql(`
   {
     site {
       siteMetadata {
@@ -30,18 +62,6 @@ module.exports = async ({ actions, graphql }) => {
     throw new Error(JSON.stringify(errors, null, 2));
   }
 
-  const {
-    site: {
-      siteMetadata: {
-        siteUrl,
-      },
-    },
-    allAtomEntry: {
-      totalCount,
-      nodes,
-    },
-  } = data;
-
   const buildUrl = (number) => `/episode/${number}`;
 
   nodes.forEach((node, index) => {
@@ -56,7 +76,7 @@ module.exports = async ({ actions, graphql }) => {
         description: node.itunes_summary._,
         episode,
         lang: /[a-z]/.test(node.title) ? 'en' : 'ru',
-        html: xss(node.description),
+        html: xss(node.description, options),
         audio: {
           ...node.enclosures[0],
           duration: node.itunes_duration._,

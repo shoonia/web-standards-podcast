@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import T from 'prop-types';
 
 import Audio from '../../components/Audio';
 import Document from '../../components/Document';
@@ -9,8 +9,8 @@ import Time from '../../components/Time';
 import urls from '../../urls';
 import css from './Episode.module.css';
 
-const Episode = (props) => {
-  const {
+function Episode({
+  data: {
     title,
     date,
     description,
@@ -19,8 +19,8 @@ const Episode = (props) => {
     html,
     audio,
     navigation,
-  } = props;
-
+  },
+}) {
   return (
     <Document
       title={title}
@@ -34,25 +34,32 @@ const Episode = (props) => {
       <div className={css.time}>
         <Time date={date} lang={lang} />
       </div>
-      <Audio {...audio} />
+      <Audio
+        url={audio.url}
+        type={audio.type}
+        duration={audio.duration}
+      />
       <Content html={html} />
       <EpisodeNavigation
-        {...navigation}
+        prevUrl={navigation.prevUrl}
+        nextUrl={navigation.nextUrl}
         current={episode}
       />
     </Document>
   );
-};
+}
 
 Episode.propTypes = {
-  title: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  episode: PropTypes.number.isRequired,
-  lang: PropTypes.string.isRequired,
-  html: PropTypes.string.isRequired,
-  audio: PropTypes.shape().isRequired,
-  navigation: PropTypes.shape().isRequired,
+  data: T.shape({
+    title: T.string.isRequired,
+    date: T.string.isRequired,
+    description: T.string.isRequired,
+    episode: T.number.isRequired,
+    lang: T.string.isRequired,
+    html: T.string.isRequired,
+    audio: T.shape().isRequired,
+    navigation: T.shape().isRequired,
+  }).isRequired,
 };
 
 export default Episode;

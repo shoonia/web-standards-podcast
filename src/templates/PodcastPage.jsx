@@ -1,14 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import T from 'prop-types';
 
 import Podcast from '../layouts/Podcast';
 
-const PodcastPage = ({ pageContext }) => (
-  <Podcast {...pageContext} />
-);
+function PodcastPage({ pageContext }) {
+  return (
+    <Podcast data={pageContext} />
+  );
+}
 
 PodcastPage.propTypes = {
-  pageContext: PropTypes.shape().isRequired,
+  pageContext: T.shape().isRequired,
 };
 
 export default PodcastPage;

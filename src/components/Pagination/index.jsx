@@ -2,7 +2,7 @@ import React from 'react';
 import { navigate } from 'gatsby';
 import ReactPaginate from 'react-paginate';
 import Helmet from 'react-helmet';
-import PropTypes from 'prop-types';
+import T from 'prop-types';
 
 import urls from '../../urls';
 import css from './Pagination.module.css';
@@ -89,10 +89,10 @@ Pagination.defaultProps = {
 };
 
 Pagination.propTypes = {
-  prevUrl: PropTypes.string,
-  nextUrl: PropTypes.string,
-  totalPages: PropTypes.number.isRequired,
-  current: PropTypes.number.isRequired,
+  prevUrl: T.string,
+  nextUrl: T.string,
+  totalPages: T.number.isRequired,
+  current: T.number.isRequired,
 };
 
 export default Pagination;

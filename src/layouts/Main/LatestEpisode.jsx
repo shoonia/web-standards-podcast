@@ -1,19 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import T from 'prop-types';
 
 import Time from '../../components/Time';
 import Audio from '../../components/Audio';
 import Content from '../../components/Content';
 
-const LatestEpisode = (props) => {
-  const {
-    title,
-    date,
-    lang,
-    html,
-    audio,
-  } = props;
-
+function LatestEpisode({
+  title,
+  date,
+  lang,
+  html,
+  audio,
+}) {
   return (
     <section lang={lang}>
       <h1>
@@ -22,19 +20,23 @@ const LatestEpisode = (props) => {
       <p>
         <Time date={date} lang={lang} />
       </p>
-      <Audio {...audio} />
+      <Audio
+        url={audio.url}
+        type={audio.type}
+        duration={audio.duration}
+      />
       <Content html={html} />
       <hr />
     </section>
   );
-};
+}
 
 LatestEpisode.propTypes = {
-  title: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  lang: PropTypes.string.isRequired,
-  html: PropTypes.string.isRequired,
-  audio: PropTypes.shape().isRequired,
+  title: T.string.isRequired,
+  date: T.string.isRequired,
+  lang: T.string.isRequired,
+  html: T.string.isRequired,
+  audio: T.shape().isRequired,
 };
 
 export default LatestEpisode;

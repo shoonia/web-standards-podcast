@@ -1,27 +1,31 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import T from 'prop-types';
 
 import css from './Time.module.css';
 
-const toLocaleString = (date, lang) => new Date(date).toLocaleString([lang], {
-  year: 'numeric',
-  month: 'long',
-  weekday: 'short',
-  day: 'numeric',
-});
+function toLocaleString(date, lang) {
+  return new Date(date).toLocaleString([lang], {
+    year: 'numeric',
+    month: 'long',
+    weekday: 'short',
+    day: 'numeric',
+  });
+}
 
-const Time = ({ date, lang }) => (
-  <time
-    dateTime={date}
-    className={css.time}
-  >
-    {toLocaleString(date, lang)}
-  </time>
-);
+function Time({ date, lang }) {
+  return (
+    <time
+      dateTime={date}
+      className={css.time}
+    >
+      {toLocaleString(date, lang)}
+    </time>
+  );
+}
 
 Time.propTypes = {
-  date: PropTypes.string.isRequired,
-  lang: PropTypes.string.isRequired,
+  date: T.string.isRequired,
+  lang: T.string.isRequired,
 };
 
 export default Time;

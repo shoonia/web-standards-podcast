@@ -1,20 +1,18 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import PropTypes from 'prop-types';
+import T from 'prop-types';
 
 import Time from '../Time';
 import urls from '../../urls';
 import css from './Playlist.module.css';
 
-const Playitem = (props) => {
-  const {
-    title,
-    description,
-    date,
-    episode,
-    lang,
-  } = props;
-
+function PlayItem({
+  title,
+  description,
+  date,
+  episode,
+  lang,
+}) {
   return (
     <li>
       <article
@@ -35,14 +33,14 @@ const Playitem = (props) => {
       </article>
     </li>
   );
+}
+
+PlayItem.propTypes = {
+  title: T.string.isRequired,
+  description: T.string.isRequired,
+  date: T.string.isRequired,
+  episode: T.number.isRequired,
+  lang: T.string.isRequired,
 };
 
-Playitem.propTypes = {
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  episode: PropTypes.number.isRequired,
-  lang: PropTypes.string.isRequired,
-};
-
-export default Playitem;
+export default PlayItem;

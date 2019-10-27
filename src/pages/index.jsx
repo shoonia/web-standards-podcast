@@ -1,11 +1,11 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import PropTypes from 'prop-types';
+import T from 'prop-types';
 
 import Main from '../layouts/Main';
 
-export const fetchMainInfo = graphql`
-  query fetchMainInfo {
+export const query = graphql`
+  {
     atomFeed {
       description
     }
@@ -44,7 +44,7 @@ export const fetchMainInfo = graphql`
     }
   }`;
 
-const IndexPage = ({
+function IndexPage({
   data: {
     atomFeed: {
       description,
@@ -55,7 +55,7 @@ const IndexPage = ({
     },
     latestEpisode,
   },
-}) => {
+}) {
   const getLang = (text) => (/[a-z]/.test(text) ? 'en' : 'ru');
   const [episode] = latestEpisode.nodes;
 
@@ -85,10 +85,10 @@ const IndexPage = ({
       latest={latest}
     />
   );
-};
+}
 
 IndexPage.propTypes = {
-  data: PropTypes.shape().isRequired,
+  data: T.shape().isRequired,
 };
 
 export default IndexPage;

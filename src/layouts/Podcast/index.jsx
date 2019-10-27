@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import T from 'prop-types';
 
 import Document from '../../components/Document';
 import Description from '../../components/Description';
@@ -7,13 +7,13 @@ import Playlist from '../../components/Playlist';
 import Pagination from '../../components/Pagination';
 import urls from '../../urls';
 
-const Podcast = (props) => {
-  const {
+function Podcast({
+  data: {
     description,
     nodes,
     navigation,
-  } = props;
-
+  },
+}) {
   return (
     <Document
       title={`Все выпуски. Страница ${navigation.current}`}
@@ -21,16 +21,23 @@ const Podcast = (props) => {
     >
       <Description text={description} />
       <Playlist nodes={nodes} />
-      <Pagination {...navigation} />
+      <Pagination
+        prevUrl={navigation.prevUrl}
+        nextUrl={navigation.nextUrl}
+        totalPages={navigation.totalPages}
+        current={navigation.current}
+      />
     </Document>
   );
-};
+}
 
 Podcast.propTypes = {
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  nodes: PropTypes.arrayOf(PropTypes.object).isRequired,
-  navigation: PropTypes.shape().isRequired,
+  data: T.shape({
+    // title: T.string.isRequired,
+    description: T.string.isRequired,
+    nodes: T.arrayOf(T.object).isRequired,
+    navigation: T.shape().isRequired,
+  }).isRequired,
 };
 
 export default Podcast;

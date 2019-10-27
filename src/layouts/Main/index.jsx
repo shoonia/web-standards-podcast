@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import PropTypes from 'prop-types';
+import T from 'prop-types';
 
 import Document from '../../components/Document';
 import Description from '../../components/Description';
@@ -8,19 +8,23 @@ import Playlist from '../../components/Playlist';
 import LatestEpisode from './LatestEpisode';
 import urls from '../../urls';
 
-const Main = (props) => {
-  const {
-    description,
-    nodes,
-    latest,
-  } = props;
-
+function Main({
+  description,
+  nodes,
+  latest,
+}) {
   return (
     <Document
       title="Подкаст"
     >
       <Description text={description} />
-      <LatestEpisode {...latest} />
+      <LatestEpisode
+        title={latest.title}
+        date={latest.date}
+        lang={latest.lang}
+        html={latest.html}
+        audio={latest.audio}
+      />
       <Playlist nodes={nodes} />
       <nav>
         <Link
@@ -31,12 +35,12 @@ const Main = (props) => {
       </nav>
     </Document>
   );
-};
+}
 
 Main.propTypes = {
-  description: PropTypes.string.isRequired,
-  nodes: PropTypes.arrayOf(PropTypes.object).isRequired,
-  latest: PropTypes.shape().isRequired,
+  description: T.string.isRequired,
+  nodes: T.arrayOf(T.object).isRequired,
+  latest: T.shape().isRequired,
 };
 
 export default Main;

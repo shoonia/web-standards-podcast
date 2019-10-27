@@ -1,18 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import T from 'prop-types';
 
 import css from './Description.module.css';
 
-const Description = ({ text }) => (
-  <div className={css.box}>
-    <p className={css.text}>
-      {text}
-    </p>
-  </div>
-);
+function Description({ text }) {
+  return (
+    <div className={css.box}>
+      <p className={css.text}>
+        {text}
+      </p>
+    </div>
+  );
+}
 
 Description.propTypes = {
-  text: PropTypes.string.isRequired,
+  text: T.string.isRequired,
 };
 
 export default Description;

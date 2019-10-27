@@ -1,14 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import T from 'prop-types';
 
 import Episode from '../layouts/Episode';
 
-const EpisodePage = ({ pageContext }) => (
-  <Episode {...pageContext} />
-);
+function EpisodePage({ pageContext }) {
+  return (
+    <Episode data={pageContext} />
+  );
+}
 
 EpisodePage.propTypes = {
-  pageContext: PropTypes.shape().isRequired,
+  pageContext: T.shape().isRequired,
 };
 
 export default EpisodePage;

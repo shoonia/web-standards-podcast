@@ -1,12 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import T from 'prop-types';
 
-import Playitem from './Playitem';
+import PlayItem from './Playitem';
 import css from './Playlist.module.css';
 
-const Playlist = ({ nodes }) => {
+function PlayList({ nodes }) {
   const items = nodes.map((node) => (
-    <Playitem key={node.episode} {...node} />
+    <PlayItem
+      key={node.episode}
+      title={node.title}
+      description={node.description}
+      date={node.date}
+      episode={node.episode}
+      lang={node.lang}
+    />
   ));
 
   return (
@@ -14,14 +21,10 @@ const Playlist = ({ nodes }) => {
       {items}
     </ul>
   );
+}
+
+PlayList.propTypes = {
+  nodes: T.arrayOf(T.object).isRequired,
 };
 
-Playlist.propTypes = {
-  nodes: PropTypes.arrayOf(
-    PropTypes.shape({
-      episode: PropTypes.number.isRequired,
-    }).isRequired,
-  ).isRequired,
-};
-
-export default Playlist;
+export default PlayList;

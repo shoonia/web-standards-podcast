@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import T from 'prop-types';
 
 import util from './util';
 import css from './AudioPlayer.module.css';
@@ -179,9 +179,9 @@ class AudioPlayer extends React.PureComponent {
 }
 
 AudioPlayer.propTypes = {
-  url: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  duration: PropTypes.string.isRequired,
+  url: T.string.isRequired,
+  type: T.string.isRequired,
+  duration: T.string.isRequired,
 };
 
 export default AudioPlayer;

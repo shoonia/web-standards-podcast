@@ -3,7 +3,7 @@ import { Link, graphql, useStaticQuery } from 'gatsby';
 
 import css from './Banner.module.css';
 
-const Banner = () => {
+function Banner() {
   const { file } = useStaticQuery(
     graphql`
       query fetchBanner {
@@ -33,6 +33,6 @@ const Banner = () => {
       </figure>
     </Link>
   );
-};
+}
 
 export default Banner;

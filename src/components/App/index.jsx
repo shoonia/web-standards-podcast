@@ -1,11 +1,11 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import PropTypes from 'prop-types';
+import T from 'prop-types';
 
 import { fetchDescription } from './query';
 import css from './App.module.css';
 
-const App = (props) => {
+function App(props) {
   const { meta, siteUrl } = fetchDescription();
   const {
     title,
@@ -84,7 +84,7 @@ const App = (props) => {
       <body className={css.content} />
     </Helmet>
   );
-};
+}
 
 App.defaultProps = {
   title: null,
@@ -95,11 +95,11 @@ App.defaultProps = {
 };
 
 App.propTypes = {
-  title: PropTypes.string,
-  description: PropTypes.string,
-  image: PropTypes.string,
-  lang: PropTypes.string,
-  path: PropTypes.string,
+  title: T.string,
+  description: T.string,
+  image: T.string,
+  lang: T.string,
+  path: T.string,
 };
 
 export default App;

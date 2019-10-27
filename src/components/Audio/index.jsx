@@ -1,9 +1,28 @@
 import React from 'react';
+import T from 'prop-types';
 
 import AudioPlayer from './AudioPlayer';
 
-export default (props) => (
-  typeof window === 'undefined'
+function Audio({
+  url,
+  type,
+  duration,
+}) {
+  return typeof window === 'undefined'
     ? null
-    : <AudioPlayer {...props} />
-);
+    : (
+      <AudioPlayer
+        url={url}
+        type={type}
+        duration={duration}
+      />
+    );
+}
+
+Audio.propTypes = {
+  url: T.string.isRequired,
+  type: T.string.isRequired,
+  duration: T.string.isRequired,
+};
+
+export default Audio;
