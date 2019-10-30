@@ -25,6 +25,7 @@ function Episode({
     <Document
       title={title}
       description={description}
+      date={date}
       lang={lang}
       path={urls.buildEpisode(episode)}
     >

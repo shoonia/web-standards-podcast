@@ -8,6 +8,7 @@ import css from './App.module.css';
 function App({
   title,
   description,
+  date,
   image,
   lang,
   path,
@@ -16,6 +17,7 @@ function App({
   const $description = description || meta.description;
   const $image = image || meta.image.url;
   const $lang = lang || meta.language;
+  const url = siteUrl + path;
 
   const metaData = [
     {
@@ -32,15 +34,19 @@ function App({
     },
     {
       property: 'og:type',
-      content: 'website',
+      content: 'article',
     },
     {
       property: 'og:url',
-      content: siteUrl + path,
+      content: url,
     },
     {
       property: 'og:image',
       content: $image,
+    },
+    {
+      property: 'article:published_time',
+      content: date,
     },
     {
       name: 'twitter:card',
@@ -77,6 +83,7 @@ function App({
         type="application/rss+xml"
         title={meta.description}
       />
+      <link rel="canonical" href={url} />
       <link rel="preconnect" href="https://web-standards.ru" />
       <link rel="dns-prefetch" href="https://web-standards.ru" />
       <body className={css.content} />
@@ -87,6 +94,7 @@ function App({
 App.defaultProps = {
   title: null,
   description: null,
+  date: '',
   image: null,
   lang: null,
   path: '',
@@ -95,6 +103,7 @@ App.defaultProps = {
 App.propTypes = {
   title: T.string,
   description: T.string,
+  date: T.string,
   image: T.string,
   lang: T.string,
   path: T.string,

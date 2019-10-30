@@ -16,6 +16,7 @@ function Main({
   return (
     <Document
       title="Подкаст"
+      date={latest.date}
     >
       <Description text={description} />
       <LatestEpisode

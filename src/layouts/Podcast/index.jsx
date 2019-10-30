@@ -10,6 +10,7 @@ import urls from '../../urls';
 function Podcast({
   data: {
     description,
+    date,
     nodes,
     navigation,
   },
@@ -18,6 +19,7 @@ function Podcast({
     <Document
       title={`Все выпуски. Страница ${navigation.current}`}
       path={urls.buildPodcast(navigation.current)}
+      date={date}
     >
       <Description text={description} />
       <Playlist nodes={nodes} />
@@ -35,6 +37,7 @@ Podcast.propTypes = {
   data: T.shape({
     // title: T.string.isRequired,
     description: T.string.isRequired,
+    date: T.string.isRequired,
     nodes: T.arrayOf(T.object).isRequired,
     navigation: T.shape().isRequired,
   }).isRequired,

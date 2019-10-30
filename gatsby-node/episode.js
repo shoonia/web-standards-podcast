@@ -1,23 +1,4 @@
-const xss = require('xss');
-
-const options = {
-  onIgnoreTagAttr(tag, name, value) {
-    if (name !== 'class') {
-      return '';
-    }
-
-    return `${name}="${xss.escapeAttrValue(value)}"`;
-  },
-
-  onTag(tag, html) {
-    if (tag === 'a') {
-      const a = html.slice(0, -1);
-      return `${a} target="_blank" rel="noopener noreferrer">`;
-    }
-
-    return html;
-  },
-};
+const { xss, minify } = require('../util/html.js');
 
 module.exports = async ({ actions, graphql }) => {
   const EpisodePage = require.resolve('../src/templates/EpisodePage.jsx');
@@ -76,7 +57,7 @@ module.exports = async ({ actions, graphql }) => {
         description: node.itunes_summary._,
         episode,
         lang: /[a-z]/.test(node.title) ? 'en' : 'ru',
-        html: xss(node.description, options),
+        html: minify(xss(node.description)),
         audio: {
           ...node.enclosures[0],
           duration: node.itunes_duration._,

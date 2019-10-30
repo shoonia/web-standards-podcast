@@ -9,6 +9,7 @@ import css from './Main.module.css';
 function Document({
   title,
   description,
+  date,
   image,
   lang,
   path,
@@ -19,6 +20,7 @@ function Document({
       <App
         title={title}
         description={description}
+        date={date}
         image={image}
         lang={lang}
         path={path}
@@ -35,6 +37,7 @@ function Document({
 Document.defaultProps = {
   title: null,
   description: null,
+  date: null,
   image: null,
   lang: null,
   path: '',
@@ -43,6 +46,7 @@ Document.defaultProps = {
 Document.propTypes = {
   title: T.string,
   description: T.string,
+  date: T.string,
   image: T.string,
   lang: T.string,
   path: T.string,
