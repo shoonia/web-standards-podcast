@@ -6,7 +6,7 @@ import css from './Content.module.css';
 
 function Content({ html }) {
   return (
-    <div
+    <article
       className={css.content}
       dangerouslySetInnerHTML={{ __html: html }}
     />
