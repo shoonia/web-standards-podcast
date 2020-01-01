@@ -23,7 +23,7 @@ const xssOtions = {
   },
 
   onTag(tag, html) {
-    if (tag === 'a') {
+    if (tag === 'a' && html !== '</a>') {
       const a = html.slice(0, -1);
       return `${a} target="_blank" rel="noopener noreferrer">`;
     }

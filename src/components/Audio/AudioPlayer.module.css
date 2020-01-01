@@ -25,16 +25,16 @@
   outline: none;
   cursor: pointer;
   -webkit-touch-callout: none;
-  transition: all .1s ease-in;
-}
-
-.button:focus {
-  box-shadow: 0 0 0 3px var(--secondary);
+  transition: all 0.1s ease-in;
 }
 
 .button:hover {
   background-color: var(--primary-light);
-  color: #FFF;
+  color: #fff;
+}
+
+.button:focus {
+  box-shadow: 0 0 0 3px var(--secondary);
 }
 
 .progress {
@@ -69,10 +69,6 @@
   max-width: 120px;
 }
 
-.volume:focus {
-  outline: none;
-}
-
 .volume::range-track {
   background-color: var(--grey-light);
   height: 5px;
@@ -85,10 +81,14 @@
   height: 17px;
   width: 17px;
   border-radius: 100px;
-  background-color: #FFF;
+  background-color: #fff;
   cursor: pointer;
   appearance: none;
   margin-top: -6px;
+}
+
+.volume:focus {
+  outline: none;
 }
 
 .duration {

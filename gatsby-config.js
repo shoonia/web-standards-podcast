@@ -1,9 +1,11 @@
+const pkg = require('./package.json');
+
 module.exports = {
   siteMetadata: {
-    title: 'Веб-стандарты',
-    description: 'Новости фронтенда за неделю в подкасте сообщества «Веб-стандарты».',
+    title: pkg.displayName,
+    description: pkg.discription,
     author: 'Ольга Алексашенко, Вадим Макеев, Мария Просвирнина, Алексей Симоненко',
-    siteUrl: 'https://web-standards.netlify.com',
+    siteUrl: pkg.homepage,
   },
   plugins: [
     'gatsby-plugin-react-helmet',
