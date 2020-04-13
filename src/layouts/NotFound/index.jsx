@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 
 import Document from '../../components/Document';
 

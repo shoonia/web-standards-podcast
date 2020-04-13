@@ -1,7 +1,7 @@
 import React from 'react';
 import { navigate } from 'gatsby';
 import ReactPaginate from 'react-paginate';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import T from 'prop-types';
 
 import urls from '../../urls';
