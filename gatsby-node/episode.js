@@ -11,11 +11,9 @@ module.exports = async ({ actions, graphql }) => {
         },
       },
       allAtomEntry: {
-        totalCount,
         nodes,
       },
     },
-    errors,
   } = await graphql(`
   {
     site {
@@ -24,13 +22,13 @@ module.exports = async ({ actions, graphql }) => {
       }
     }
     allAtomEntry {
-      totalCount
       nodes {
         title
         date
         description
         itunes_summary { _ }
         itunes_duration { _ }
+        itunes_episode { _ }
         enclosures {
           url
           type
@@ -39,32 +37,34 @@ module.exports = async ({ actions, graphql }) => {
     }
   }`);
 
-  if (errors) {
-    throw new Error(JSON.stringify(errors, null, 2));
-  }
+  const buildUrl = (node) => (
+    (node !== undefined) ? `/episode/${node.itunes_episode._}` : null
+  );
 
-  const buildUrl = (number) => `/episode/${number}`;
-
-  nodes.forEach((node, index) => {
-    const episode = index + 1;
+  nodes.forEach((node, index, list) => {
+    const currentUrl = buildUrl(node);
+    const prevNode = list[index - 1];
+    const nextNode = list[index + 1];
 
     actions.createPage({
-      path: buildUrl(episode),
+      path: currentUrl,
       component: EpisodePage,
       context: {
         title: node.title,
         date: node.date,
         description: node.itunes_summary._,
-        episode,
-        lang: /[a-z]/.test(node.title) ? 'en' : 'ru',
+        episode: node.itunes_episode._,
+        lang: '',
         html: minify(xss(node.description)),
         audio: {
           ...node.enclosures[0],
           duration: node.itunes_duration._,
         },
         navigation: {
-          prevUrl: (index > 0) ? (siteUrl + buildUrl(index)) : null,
-          nextUrl: (episode < totalCount) ? (siteUrl + buildUrl(episode + 1)) : null,
+          siteUrl,
+          currentUrl,
+          prevUrl: buildUrl(prevNode),
+          nextUrl: buildUrl(nextNode),
         },
       },
     });

@@ -41,11 +41,7 @@ function Episode({
         duration={audio.duration}
       />
       <Content html={html} />
-      <EpisodeNavigation
-        prevUrl={navigation.prevUrl}
-        nextUrl={navigation.nextUrl}
-        current={episode}
-      />
+      <EpisodeNavigation navigation={navigation} />
     </Document>
   );
 }
@@ -55,7 +51,6 @@ Episode.propTypes = {
     title: T.string.isRequired,
     date: T.string.isRequired,
     description: T.string.isRequired,
-    episode: T.number.isRequired,
     lang: T.string.isRequired,
     html: T.string.isRequired,
     audio: T.shape().isRequired,

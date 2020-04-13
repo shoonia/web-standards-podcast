@@ -4,7 +4,7 @@ module.exports = {
   siteMetadata: {
     title: pkg.displayName,
     description: pkg.discription,
-    author: 'Ольга Алексашенко, Вадим Макеев, Мария Просвирнина, Алексей Симоненко',
+    author: 'Ольга Алексашенко, Никита Дубко, Вадим Макеев, Мария Просвирнина, Алексей Симоненко',
     siteUrl: pkg.homepage,
   },
   plugins: [
@@ -39,6 +39,8 @@ module.exports = {
         additionalEntryFields: [
           'itunes:summary',
           'itunes:duration',
+          'itunes:episode',
+          'itunes:author',
         ],
       },
     },

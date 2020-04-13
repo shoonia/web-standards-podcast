@@ -3,40 +3,41 @@ import Helmet from 'react-helmet';
 import { Link } from 'gatsby';
 import T from 'prop-types';
 
-import urls from '../../urls';
-import css from './Episode.module.css';
+import s from './Episode.module.css';
 
-function EpisodeNavigation({ current, prevUrl, nextUrl }) {
+function EpisodeNavigation({
+  navigation: {
+    siteUrl,
+    prevUrl,
+    nextUrl,
+  },
+}) {
+  const createURL = (path) => new URL(path, siteUrl).toString();
+
   return (
     <>
       <Helmet>
         {(prevUrl !== null) && (
           <link
             rel="prev"
-            href={prevUrl}
+            href={createURL(prevUrl)}
           />
         )}
         {(nextUrl !== null) && (
           <link
             rel="next"
-            href={nextUrl}
+            href={createURL(nextUrl)}
           />
         )}
       </Helmet>
-      <nav
-        className={css.navbar}
-      >
+      <nav className={s.navbar}>
         {(nextUrl !== null) && (
-          <Link
-            to={urls.buildEpisode(current + 1)}
-          >
+          <Link to={nextUrl}>
             Следующий выпуск
           </Link>
         )}
         {(prevUrl !== null) && (
-          <Link
-            to={urls.buildEpisode(current - 1)}
-          >
+          <Link to={prevUrl}>
             Предыдущий выпуск
           </Link>
         )}
@@ -45,15 +46,12 @@ function EpisodeNavigation({ current, prevUrl, nextUrl }) {
   );
 }
 
-EpisodeNavigation.defaultProps = {
-  prevUrl: null,
-  nextUrl: null,
-};
-
 EpisodeNavigation.propTypes = {
-  current: T.number.isRequired,
-  prevUrl: T.string,
-  nextUrl: T.string,
+  navigation: T.shape({
+    siteUrl: T.string,
+    prevUrl: T.string,
+    nextUrl: T.string,
+  }).isRequired,
 };
 
 export default EpisodeNavigation;
