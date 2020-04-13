@@ -1,6 +1,6 @@
 import { graphql, useStaticQuery } from 'gatsby';
 
-export function fetchDescription() {
+export default () => {
   const {
     meta,
     site: {
@@ -31,6 +31,4 @@ export function fetchDescription() {
     meta,
     siteUrl,
   };
-}
-
-export default null;
+};

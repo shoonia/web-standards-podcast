@@ -44,7 +44,7 @@ export const query = graphql`
     }
   }`;
 
-function IndexPage({
+const IndexPage = ({
   data: {
     atomFeed: {
       description,
@@ -55,7 +55,7 @@ function IndexPage({
     },
     latestEpisode,
   },
-}) {
+}) => {
   const getLang = (text) => (/[a-z]/.test(text) ? 'en' : 'ru');
   const [episode] = latestEpisode.nodes;
 
@@ -85,7 +85,7 @@ function IndexPage({
       latest={latest}
     />
   );
-}
+};
 
 IndexPage.propTypes = {
   data: T.shape().isRequired,

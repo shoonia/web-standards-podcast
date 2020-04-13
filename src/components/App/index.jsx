@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import T from 'prop-types';
 
-import { fetchDescription } from './query';
+import fetchDescription from './query';
 import css from './App.module.css';
 
 const App = ({

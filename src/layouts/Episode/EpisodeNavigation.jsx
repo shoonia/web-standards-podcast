@@ -5,13 +5,13 @@ import T from 'prop-types';
 
 import s from './Episode.module.css';
 
-function EpisodeNavigation({
+const EpisodeNavigation = ({
   navigation: {
     siteUrl,
     prevUrl,
     nextUrl,
   },
-}) {
+}) => {
   const createURL = (path) => new URL(path, siteUrl).toString();
 
   return (
@@ -44,7 +44,7 @@ function EpisodeNavigation({
       </nav>
     </>
   );
-}
+};
 
 EpisodeNavigation.propTypes = {
   navigation: T.shape({

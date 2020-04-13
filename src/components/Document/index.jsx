@@ -6,31 +6,29 @@ import Header from '../Header';
 import Footer from '../Footer';
 import css from './Main.module.css';
 
-function Document({
+const Document = ({
   title,
   description,
   date,
   image,
   path,
   children,
-}) {
-  return (
-    <>
-      <App
-        title={title}
-        description={description}
-        date={date}
-        image={image}
-        path={path}
-      />
-      <Header />
-      <main className={css.container}>
-        {children}
-      </main>
-      <Footer />
-    </>
-  );
-}
+}) => (
+  <>
+    <App
+      title={title}
+      description={description}
+      date={date}
+      image={image}
+      path={path}
+    />
+    <Header />
+    <main className={css.container}>
+      {children}
+    </main>
+    <Footer />
+  </>
+);
 
 Document.defaultProps = {
   title: null,

@@ -3,11 +3,9 @@ import T from 'prop-types';
 
 import Episode from '../layouts/Episode';
 
-function EpisodePage({ pageContext }) {
-  return (
-    <Episode data={pageContext} />
-  );
-}
+const EpisodePage = ({ pageContext }) => (
+  <Episode data={pageContext} />
+);
 
 EpisodePage.propTypes = {
   pageContext: T.shape().isRequired,

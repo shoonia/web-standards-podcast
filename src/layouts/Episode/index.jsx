@@ -9,7 +9,7 @@ import Time from '../../components/Time';
 import urls from '../../urls';
 import s from './Episode.module.css';
 
-function Episode({
+const Episode = ({
   data: {
     title,
     date,
@@ -19,30 +19,28 @@ function Episode({
     audio,
     navigation,
   },
-}) {
-  return (
-    <Document
-      title={title}
-      description={description}
-      date={date}
-      path={urls.buildEpisode(episode)}
-    >
-      <h1>
-        {title}
-      </h1>
-      <div className={s.time}>
-        <Time date={date} />
-      </div>
-      <Audio
-        url={audio.url}
-        type={audio.type}
-        duration={audio.duration}
-      />
-      <Content html={html} />
-      <EpisodeNavigation navigation={navigation} />
-    </Document>
-  );
-}
+}) => (
+  <Document
+    title={title}
+    description={description}
+    date={date}
+    path={urls.buildEpisode(episode)}
+  >
+    <h1>
+      {title}
+    </h1>
+    <div className={s.time}>
+      <Time date={date} />
+    </div>
+    <Audio
+      url={audio.url}
+      type={audio.type}
+      duration={audio.duration}
+    />
+    <Content html={html} />
+    <EpisodeNavigation navigation={navigation} />
+  </Document>
+);
 
 Episode.propTypes = {
   data: T.shape({

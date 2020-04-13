@@ -4,7 +4,7 @@ import T from 'prop-types';
 import PlayItem from './Playitem';
 import css from './Playlist.module.css';
 
-function PlayList({ nodes }) {
+const PlayList = ({ nodes }) => {
   const items = nodes.map((node) => (
     <PlayItem
       key={node.episode}
@@ -21,7 +21,7 @@ function PlayList({ nodes }) {
       {items}
     </ul>
   );
-}
+};
 
 PlayList.propTypes = {
   nodes: T.arrayOf(T.object).isRequired,

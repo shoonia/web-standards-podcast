@@ -3,21 +3,19 @@ import T from 'prop-types';
 
 import AudioPlayer from './AudioPlayer';
 
-function Audio({
+const Audio = ({
   url,
   type,
   duration,
-}) {
-  return typeof window === 'undefined'
-    ? null
-    : (
-      <AudioPlayer
-        url={url}
-        type={type}
-        duration={duration}
-      />
-    );
-}
+}) => (typeof window === 'undefined'
+  ? null
+  : (
+    <AudioPlayer
+      url={url}
+      type={type}
+      duration={duration}
+    />
+  ));
 
 Audio.propTypes = {
   url: T.string.isRequired,

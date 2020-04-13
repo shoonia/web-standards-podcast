@@ -8,35 +8,33 @@ import Playlist from '../../components/Playlist';
 import LatestEpisode from './LatestEpisode';
 import urls from '../../urls';
 
-function Main({
+const Main = ({
   description,
   nodes,
   latest,
-}) {
-  return (
-    <Document
-      title="Подкаст"
+}) => (
+  <Document
+    title="Подкаст"
+    date={latest.date}
+  >
+    <Description text={description} />
+    <LatestEpisode
+      title={latest.title}
       date={latest.date}
-    >
-      <Description text={description} />
-      <LatestEpisode
-        title={latest.title}
-        date={latest.date}
-        lang={latest.lang}
-        html={latest.html}
-        audio={latest.audio}
-      />
-      <Playlist nodes={nodes} />
-      <nav>
-        <Link
-          to={urls.buildPodcast(1)}
-        >
+      lang={latest.lang}
+      html={latest.html}
+      audio={latest.audio}
+    />
+    <Playlist nodes={nodes} />
+    <nav>
+      <Link
+        to={urls.buildPodcast(1)}
+      >
           Все выпуски
-        </Link>
-      </nav>
-    </Document>
-  );
-}
+      </Link>
+    </nav>
+  </Document>
+);
 
 Main.propTypes = {
   description: T.string.isRequired,
