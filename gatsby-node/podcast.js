@@ -54,7 +54,6 @@ module.exports = async ({ actions, graphql }) => {
     date: node.date,
     description: node.itunes_summary._,
     episode: totalCount - index,
-    lang: /[a-z]/.test(node.title) ? 'en' : 'ru',
   }));
 
   Array(totalPages).fill(null).forEach((_, index) => {
@@ -72,6 +71,7 @@ module.exports = async ({ actions, graphql }) => {
           // totalCount,
           totalPages,
           current,
+          currentUrl: buildUrl(current),
           prevUrl: (index > 0) ? (siteUrl + buildUrl(index)) : null,
           nextUrl: (current < totalPages) ? (siteUrl + buildUrl(current + 1)) : null,
         },

@@ -54,7 +54,6 @@ module.exports = async ({ actions, graphql }) => {
         date: node.date,
         description: node.itunes_summary._,
         episode: node.itunes_episode._,
-        lang: '',
         html: minify(xss(node.description)),
         audio: {
           ...node.enclosures[0],
