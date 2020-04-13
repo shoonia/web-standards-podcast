@@ -5,18 +5,16 @@ import T from 'prop-types';
 import { fetchDescription } from './query';
 import css from './App.module.css';
 
-function App({
+const App = ({
   title,
   description,
   date,
   image,
-  lang,
   path,
-}) {
+}) => {
   const { meta, siteUrl } = fetchDescription();
   const $description = description || meta.description;
   const $image = image || meta.image.url;
-  const $lang = lang || meta.language;
   const url = siteUrl + path;
 
   const metaData = [
@@ -76,7 +74,7 @@ function App({
       titleTemplate={`%s | ${title}`}
       meta={metaData}
     >
-      <html lang={$lang} className={css.root} />
+      <html lang="ru" className={css.root} />
       <link
         rel="alternate"
         href="https://web-standards.ru/podcast/feed/"
@@ -89,14 +87,13 @@ function App({
       <body className={css.content} />
     </Helmet>
   );
-}
+};
 
 App.defaultProps = {
   title: null,
   description: null,
   date: '',
   image: null,
-  lang: null,
   path: '',
 };
 
@@ -105,7 +102,6 @@ App.propTypes = {
   description: T.string,
   date: T.string,
   image: T.string,
-  lang: T.string,
   path: T.string,
 };
 

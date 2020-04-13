@@ -7,7 +7,7 @@ import Content from '../../components/Content';
 import EpisodeNavigation from './EpisodeNavigation';
 import Time from '../../components/Time';
 import urls from '../../urls';
-import css from './Episode.module.css';
+import s from './Episode.module.css';
 
 function Episode({
   data: {
@@ -15,7 +15,6 @@ function Episode({
     date,
     description,
     episode,
-    lang,
     html,
     audio,
     navigation,
@@ -26,14 +25,13 @@ function Episode({
       title={title}
       description={description}
       date={date}
-      lang={lang}
       path={urls.buildEpisode(episode)}
     >
       <h1>
         {title}
       </h1>
-      <div className={css.time}>
-        <Time date={date} lang={lang} />
+      <div className={s.time}>
+        <Time date={date} />
       </div>
       <Audio
         url={audio.url}
@@ -51,7 +49,7 @@ Episode.propTypes = {
     title: T.string.isRequired,
     date: T.string.isRequired,
     description: T.string.isRequired,
-    lang: T.string.isRequired,
+    episode: T.string.isRequired,
     html: T.string.isRequired,
     audio: T.shape().isRequired,
     navigation: T.shape().isRequired,

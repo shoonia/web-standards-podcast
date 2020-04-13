@@ -11,7 +11,6 @@ function Document({
   description,
   date,
   image,
-  lang,
   path,
   children,
 }) {
@@ -22,7 +21,6 @@ function Document({
         description={description}
         date={date}
         image={image}
-        lang={lang}
         path={path}
       />
       <Header />
@@ -39,7 +37,6 @@ Document.defaultProps = {
   description: null,
   date: null,
   image: null,
-  lang: null,
   path: '',
 };
 
@@ -48,7 +45,6 @@ Document.propTypes = {
   description: T.string,
   date: T.string,
   image: T.string,
-  lang: T.string,
   path: T.string,
   children: T.node.isRequired,
 };
