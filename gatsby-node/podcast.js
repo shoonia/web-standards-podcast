@@ -1,7 +1,7 @@
 module.exports = async ({ actions, graphql }) => {
   const PodcastPage = require.resolve('../src/templates/PodcastPage.jsx');
 
-  const { data, errors } = await graphql(`
+  const { data } = await graphql(`
   {
     site {
       siteMetadata {
@@ -25,10 +25,6 @@ module.exports = async ({ actions, graphql }) => {
       }
     }
   }`);
-
-  if (errors) {
-    throw new Error(JSON.stringify(errors, null, 2));
-  }
 
   const {
     site: {

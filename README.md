@@ -1,3 +1,3 @@
 # Веб-стандарты подкаст
 
-[https://web-standards.netlify.com](https://web-standards.netlify.com)
+[https://web-standards.netlify.app](https://web-standards.netlify.app)

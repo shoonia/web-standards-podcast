@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 Disallow: /404.html
-Host: web-standards.netlify.com
-Sitemap: https://web-standards.netlify.com/sitemap.xml
+Host: web-standards.netlify.app
+Sitemap: https://web-standards.netlify.app/sitemap.xml
