@@ -30,7 +30,7 @@ const Main = ({
       <Link
         to={urls.buildPodcast(1)}
       >
-          Все выпуски
+        Все выпуски
       </Link>
     </nav>
   </Document>
