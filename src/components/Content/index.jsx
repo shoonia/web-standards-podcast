@@ -2,11 +2,11 @@
 import React from 'react';
 import T from 'prop-types';
 
-import css from './Content.module.css';
+import * as s from './Content.module.css';
 
 const Content = ({ html }) => (
   <article
-    className={css.content}
+    className={s.content}
     dangerouslySetInnerHTML={{ __html: html }}
   />
 );

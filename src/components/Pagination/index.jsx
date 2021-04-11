@@ -4,8 +4,8 @@ import ReactPaginate from 'react-paginate';
 import { Helmet } from 'react-helmet';
 import T from 'prop-types';
 
+import * as s from './Pagination.module.css';
 import urls from '../../urls';
-import css from './Pagination.module.css';
 
 class Pagination extends React.PureComponent {
   ariaLabelBuilder = (pageNumber, isActive) => (
@@ -59,22 +59,22 @@ class Pagination extends React.PureComponent {
             marginPagesDisplayed={1}
             disableInitialCallback
 
-            containerClassName={css.list}
-            pageLinkClassName={css.link}
+            containerClassName={s.list}
+            pageLinkClassName={s.link}
 
-            pageClassName={css.item}
-            activeClassName={css.active}
-            disabledClassName={css.disabled}
+            pageClassName={s.item}
+            activeClassName={s.active}
+            disabledClassName={s.disabled}
 
-            previousClassName={css.prev}
-            previousLinkClassName={css.link}
+            previousClassName={s.prev}
+            previousLinkClassName={s.link}
             previousLabel="Позже"
 
-            nextClassName={css.next}
-            nextLinkClassName={css.link}
+            nextClassName={s.next}
+            nextLinkClassName={s.link}
             nextLabel="Раньше"
 
-            breakClassName={css.break}
+            breakClassName={s.break}
             breakLabel="..."
           />
         </nav>

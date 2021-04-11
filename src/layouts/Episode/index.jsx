@@ -1,13 +1,13 @@
 import React from 'react';
 import T from 'prop-types';
 
+import * as s from './Episode.module.css';
 import Audio from '../../components/Audio';
 import Document from '../../components/Document';
 import Content from '../../components/Content';
 import EpisodeNavigation from './EpisodeNavigation';
 import Time from '../../components/Time';
 import urls from '../../urls';
-import s from './Episode.module.css';
 
 const Episode = ({
   data: {

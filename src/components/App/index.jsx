@@ -2,8 +2,8 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import T from 'prop-types';
 
-import fetchDescription from './query';
-import css from './App.module.css';
+import * as s from './App.module.css';
+import { fetchDescription } from './query';
 
 const App = ({
   title,
@@ -74,7 +74,7 @@ const App = ({
       titleTemplate={`%s | ${title}`}
       meta={metaData}
     >
-      <html lang="ru" className={css.root} />
+      <html lang="ru" className={s.root} />
       <link
         rel="alternate"
         href="https://web-standards.ru/podcast/feed/"
@@ -84,7 +84,7 @@ const App = ({
       <link rel="canonical" href={url} />
       <link rel="preconnect" href="https://web-standards.ru" />
       <link rel="dns-prefetch" href="https://web-standards.ru" />
-      <body className={css.content} />
+      <body className={s.content} />
     </Helmet>
   );
 };

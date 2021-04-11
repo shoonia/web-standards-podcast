@@ -1,11 +1,11 @@
 import React from 'react';
 import T from 'prop-types';
 
-import css from './Description.module.css';
+import * as s from './Description.module.css';
 
 const Description = ({ text }) => (
-  <div className={css.box}>
-    <p className={css.text}>
+  <div className={s.box}>
+    <p className={s.text}>
       {text}
     </p>
   </div>

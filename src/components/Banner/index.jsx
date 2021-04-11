@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, graphql, useStaticQuery } from 'gatsby';
 
-import css from './Banner.module.css';
+import * as s from './Banner.module.css';
 
 const Banner = () => {
   const { file } = useStaticQuery(
@@ -17,17 +17,17 @@ const Banner = () => {
     <Link
       to="/"
       aria-label="главная"
-      className={css.link}
+      className={s.link}
     >
-      <figure className={css.box}>
+      <figure className={s.box}>
         <img
           src={file.publicURL}
           alt="Веб-стандарты"
           height="60"
           width="40"
-          className={css.image}
+          className={s.image}
         />
-        <figcaption className={css.title}>
+        <figcaption className={s.title}>
           Веб-стандарты
         </figcaption>
       </figure>

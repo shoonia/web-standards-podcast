@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'gatsby';
 import T from 'prop-types';
 
+import * as s from './Playlist.module.css';
 import Time from '../Time';
 import urls from '../../urls';
-import s from './Playlist.module.css';
 
 const PlayItem = ({
   title,

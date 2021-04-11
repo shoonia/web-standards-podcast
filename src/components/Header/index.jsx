@@ -1,11 +1,11 @@
 import React, { memo } from 'react';
 
+import * as s from './Header.module.css';
 import Banner from '../Banner';
-import css from './Header.module.css';
 
 const Header = () => (
-  <header className={css.header}>
-    <div className={css.wrapper}>
+  <header className={s.header}>
+    <div className={s.wrapper}>
       <Banner />
     </div>
   </header>

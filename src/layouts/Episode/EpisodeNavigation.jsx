@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import { Link } from 'gatsby';
 import T from 'prop-types';
 
-import s from './Episode.module.css';
+import * as s from './Episode.module.css';
 
 const EpisodeNavigation = ({
   navigation: {

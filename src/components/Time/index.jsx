@@ -1,7 +1,7 @@
 import React from 'react';
 import T from 'prop-types';
 
-import s from './Time.module.css';
+import { time } from './Time.module.css';
 
 const toLocaleString = (date, lang) => new Date(date).toLocaleString([lang], {
   year: 'numeric',
@@ -13,9 +13,9 @@ const toLocaleString = (date, lang) => new Date(date).toLocaleString([lang], {
 const Time = ({ date }) => (
   <time
     dateTime={date}
-    className={s.time}
+    className={time}
   >
-    {toLocaleString(date, 'en')}
+    {toLocaleString(date, 'ru')}
   </time>
 );
 

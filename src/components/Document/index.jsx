@@ -1,10 +1,10 @@
 import React from 'react';
 import T from 'prop-types';
 
+import * as s from './Main.module.css';
 import App from '../App';
 import Header from '../Header';
 import Footer from '../Footer';
-import css from './Main.module.css';
 
 const Document = ({
   title,
@@ -23,7 +23,7 @@ const Document = ({
       path={path}
     />
     <Header />
-    <main className={css.container}>
+    <main className={s.container}>
       {children}
     </main>
     <Footer />

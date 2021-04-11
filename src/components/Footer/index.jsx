@@ -1,13 +1,13 @@
 import React from 'react';
 
-import css from './Footer.module.css';
+import * as s from './Footer.module.css';
 
 const Footer = () => (
   <footer
-    className={css.footer}
+    className={s.footer}
     role="contentinfo"
   >
-    <div className={css.container}>
+    <div className={s.container}>
       <section>
         <h3>
           Слушайте
@@ -72,7 +72,7 @@ const Footer = () => (
         </ul>
       </section>
     </div>
-    <div className={css.container}>
+    <div className={s.container}>
       <abbr
         title="Лицензии Creative Commons"
       >

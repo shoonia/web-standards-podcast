@@ -1,8 +1,8 @@
 import React from 'react';
 import T from 'prop-types';
 
+import * as s from './AudioPlayer.module.css';
 import util from './util';
-import css from './AudioPlayer.module.css';
 import Speaker from '../Icons/Speaker';
 import Play from '../Icons/Play';
 
@@ -127,20 +127,20 @@ class AudioPlayer extends React.PureComponent {
     const { isPaused, isMuted, volume } = this.state;
 
     return (
-      <div className={css.player}>
-        <div className={css.controls}>
+      <div className={s.player}>
+        <div className={s.controls}>
           <button
             type="button"
             onClick={this.toggleSound}
-            className={css.button}
+            className={s.button}
           >
             <Play isPaused={isPaused} />
           </button>
-          <div className={css.muted}>
+          <div className={s.muted}>
             <button
               type="button"
               onClick={this.handleMuted}
-              className={css.button}
+              className={s.button}
             >
               <Speaker
                 volume={volume}
@@ -150,7 +150,7 @@ class AudioPlayer extends React.PureComponent {
             <input
               ref={this.volumeRef}
               onInput={this.handleInputVolume}
-              className={css.volume}
+              className={s.volume}
               type="range"
               max="1"
               min="0"
@@ -158,19 +158,19 @@ class AudioPlayer extends React.PureComponent {
             />
           </div>
         </div>
-        <div className={css.controls}>
+        <div className={s.controls}>
           <div
             ref={this.progressRef}
-            className={css.progress}
+            className={s.progress}
           >
             <div
               ref={this.passedRef}
-              className={css.passed}
+              className={s.passed}
             />
           </div>
           <output
             ref={this.timerRef}
-            className={css.duration}
+            className={s.duration}
           />
         </div>
       </div>

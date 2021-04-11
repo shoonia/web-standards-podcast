@@ -1,6 +1,6 @@
 import { graphql, useStaticQuery } from 'gatsby';
 
-export default () => {
+export const fetchDescription = () => {
   const {
     meta,
     site: {

@@ -1,8 +1,8 @@
 import React from 'react';
 import T from 'prop-types';
 
+import * as s from './Playlist.module.css';
 import PlayItem from './Playitem';
-import css from './Playlist.module.css';
 
 const PlayList = ({ nodes }) => {
   const items = nodes.map((node) => (
@@ -17,7 +17,7 @@ const PlayList = ({ nodes }) => {
   ));
 
   return (
-    <ul className={css.list}>
+    <ul className={s.list}>
       {items}
     </ul>
   );
