@@ -11,7 +11,7 @@ module.exports = {
   siteMetadata: {
     title: pkg.displayName,
     description: pkg.discription,
-    author: 'Ольга Алексашенко, Никита Дубко, Вадим Макеев, Мария Просвирнина, Алексей Симоненко',
+    author: 'Ольга Алексашенко, Никита Дубко, Вадим Макеев, Андей Мелихов, Мария Просвирнина, Алексей Симоненко',
     siteUrl: pkg.homepage,
   },
   plugins: [
