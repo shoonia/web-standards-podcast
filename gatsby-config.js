@@ -1,4 +1,11 @@
+const { realpathSync } = require('fs');
+const { resolve } = require('path');
+
 const pkg = require('./package.json');
+
+const root = realpathSync(process.cwd());
+
+process.env.NODE_ICU_DATA = resolve(root, 'node_modules/full-icu');
 
 module.exports = {
   siteMetadata: {
